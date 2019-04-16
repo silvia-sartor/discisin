@@ -1,4 +1,4 @@
 class Match < ApplicationRecord
-  belongs_to :category
   belongs_to :event
+  has_many :teamss
 end

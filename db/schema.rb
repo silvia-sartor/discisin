@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_222805) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
+    t.string "name"
     t.date "when"
     t.string "where"
     t.float "latitude"
@@ -23,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_222805) do
     t.float "price"
     t.string "currency"
     t.text "description"
-    t.string "category"
+    t.string "categories"
     t.string "links"
     t.string "contact"
     t.bigint "user_id"
@@ -91,7 +92,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_222805) do
     t.string "lastname"
     t.string "nickname"
     t.date "birthday"
-    t.integer "phone"
+    t.string "phone"
     t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
