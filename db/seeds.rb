@@ -112,7 +112,6 @@ match_one = Match.create(
   game_length: 80 ,
   where: "via del sale 60, Cremona",
   field: "Campo 1",
-  # category: "Women",
   hometeam_id: Team.where(name: "Donkey Ladies").first.id,
   awayteam_id: Team.where(name: "Hub").first.id,
   event_id: Event.first.id
@@ -125,7 +124,6 @@ match_one = Match.create(
   game_length: 80 ,
   where: "via del sale 60, Cremona",
   field: "Campo 1",
-  # category: "Women",
   hometeam_id: Team.where(name: "Fireflies").first.id,
   awayteam_id: Team.where(name: "CUSB Red Bulle West").first.id,
   event_id: Event.first.id
@@ -137,7 +135,6 @@ match_one = Match.create(
   game_length: 80 ,
   where: "via del sale 60, Cremona",
   field: "Campo 1",
-  # category: "Women",
   hometeam_id: Team.where(name: "Donkey Ladies").first.id,
   awayteam_id: Team.where(name: "2DPick").first.id,
   event_id: Event.first.id
@@ -149,7 +146,6 @@ match_one = Match.create(
   game_length: 80 ,
   where: "via del sale 60, Cremona",
   field: "Campo 1",
-  # category: "Women",
   hometeam_id: Team.where(name: "Fireflies").first.id,
   awayteam_id: Team.where(name: "CUS Padova Tane Malefiche").first.id,
   event_id: Event.first.id
@@ -161,7 +157,6 @@ match_one = Match.create(
   game_length: 80 ,
   where: "via del sale 60, Cremona",
   field: "Campo 1",
-  # category: "Women",
   hometeam_id: Team.where(name: "Hub").first.id,
   awayteam_id: Team.where(name: "2DPick").first.id,
   event_id: Event.first.id

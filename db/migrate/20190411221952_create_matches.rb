@@ -8,7 +8,6 @@ class CreateMatches < ActiveRecord::Migration[5.2]
       t.float :latitude
       t.float :longitude
       t.string :field
-      t.string :category
       t.integer :hometeam_score, default: nil
       t.integer :awayteam_score, default: nil
       t.integer :hometeam_sotg, default: nil

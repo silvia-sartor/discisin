@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2019_04_11_222805) do
     t.float "latitude"
     t.float "longitude"
     t.string "field"
-    t.string "category"
     t.integer "hometeam_score"
     t.integer "awayteam_score"
     t.integer "hometeam_sotg"
