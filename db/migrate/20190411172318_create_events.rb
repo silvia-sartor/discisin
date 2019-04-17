@@ -1,6 +1,7 @@
 class CreateEvents < ActiveRecord::Migration[5.2]
   def change
     create_table :events do |t|
+      t.string :name
       t.date :when
       t.string :where
       t.float :latitude
@@ -8,7 +9,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.float :price
       t.string :currency
       t.text :description
-      t.string :category
+      t.string :categories
       t.string :links
       t.string :contact
       t.references :user, foreign_key: true
