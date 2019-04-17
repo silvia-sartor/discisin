@@ -1,0 +1,12 @@
+
+<h1><%= @event.name %></h1>
+
+<p>When:</p><h2><%= @event.when %></h2>
+<p>Where:</p><h2><%= @event.where %></h2>
+
+<h1>GAMES</h1>
+
+<% @matches.each do |match| %>
+<p>When:</p><h2><%= match.day %></h2>
+<p>Where:</p><h2><%= match.where %></h2>
+<%end %>

@@ -1,2 +1,29 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- <h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p> -->
+
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.zagsblog.com/wp-content/uploads/2017/08/SK2.jpg);">
+  <div class="banner-container-bigtitle">
+    <h1>Disc Is In!!</h1>
+    <p>What are you waiting for?</p>
+  </div>
+  <div class="banner-container-smalltitle">
+    <h3>No matter the weather:
+      <br>
+    play and fly high!!</h3>
+  </div>
+</div>
+
+<div class="event-container">
+<% @events.each do |event| %>
+<%= link_to event_path(event), method: :get do %>
+  <div class="card-product">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+    <div class="card-product-infos">
+      <h2><%= event.name %></h2>
+      <p><strong><%= event.when %></strong> at <%= event.where %>.</p>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+</div>
