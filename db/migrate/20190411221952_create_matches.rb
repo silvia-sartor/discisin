@@ -3,11 +3,13 @@ class CreateMatches < ActiveRecord::Migration[5.2]
     create_table :matches do |t|
       t.date :day
       t.time :start_time
+      t.string :name
       t.integer :game_length
       t.string :where
       t.float :latitude
       t.float :longitude
       t.string :field
+      t.boolean :points?, default: true
       t.integer :hometeam_score, default: nil
       t.integer :awayteam_score, default: nil
       t.integer :hometeam_sotg, default: nil

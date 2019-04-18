@@ -9,6 +9,7 @@
 
 puts 'Cleaning database...'
 Favorite.destroy_all
+Point.destroy_all
 Match.destroy_all
 Team.destroy_all
 Event.destroy_all
@@ -108,6 +109,7 @@ tane = Team.create(
 puts 'Creating fake matches...'
 
 match_one = Match.create(
+  name: "WB N",
   day: "2019-04-14",
   start_time: "9:00",
   game_length: 80 ,
@@ -122,6 +124,7 @@ match_one = Match.create(
 
 
 match_one = Match.create(
+  name: "WB N",
   day: "2019-04-14",
   start_time: "10:30",
   game_length: 80 ,
@@ -135,6 +138,7 @@ match_one = Match.create(
 )
 
 match_one = Match.create(
+  name: "WB N",
   day: "2019-04-14",
   start_time: "12:00",
   game_length: 80 ,
@@ -148,6 +152,7 @@ match_one = Match.create(
 )
 
 match_one = Match.create(
+  name: "WB N",
   day: "2019-04-14",
   start_time: "13:30",
   game_length: 80 ,
@@ -161,6 +166,7 @@ match_one = Match.create(
 )
 
 match_one = Match.create(
+  name: "WB N",
   day: "2019-04-14",
   start_time: "15:00",
   game_length: 80 ,
@@ -174,6 +180,7 @@ match_one = Match.create(
 )
 
 match_one = Match.create(
+  name: "WB N",
   day: "2019-04-14",
   start_time: "16:30",
   game_length: 80 ,
@@ -187,6 +194,7 @@ match_one = Match.create(
 )
 
 match_due = Match.create(
+  name: "WB N",
   day: "2019-03-17",
   start_time: "9:00",
   game_length: 80 ,
@@ -200,6 +208,7 @@ match_due = Match.create(
 )
 
 match_due = Match.create(
+  name: "WB N",
   day: "2019-03-17",
   start_time: "10:30",
   game_length: 80 ,
@@ -213,6 +222,7 @@ match_due = Match.create(
 )
 
 match_due = Match.create(
+  name: "WB N",
   day: "2019-03-17",
   start_time: "12:00",
   game_length: 80 ,
@@ -226,6 +236,7 @@ match_due = Match.create(
 )
 
 match_due = Match.create(
+  name: "WB N",
   day: "2019-03-17",
   start_time: "13:30",
   game_length: 80 ,
@@ -239,6 +250,7 @@ match_due = Match.create(
 )
 
 match_due = Match.create(
+  name: "WB N",
   day: "2019-03-17",
   start_time: "15:00",
   game_length: 80 ,
@@ -252,6 +264,7 @@ match_due = Match.create(
 )
 
 match_due = Match.create(
+  name: "WB N",
   day: "2019-03-17",
   start_time: "16:30",
   game_length: 80 ,
@@ -264,5 +277,35 @@ match_due = Match.create(
   awayteam_score:11
 )
 
+
+
+def points(hometeam_score, awayteam_score)
+  if hometeam_score - awayteam_score >= 4
+    return 3
+  elsif hometeam_score - awayteam_score > 0
+    return 2
+  elsif hometeam_score - awayteam_score >= -4
+    return 1
+  else hometeam_score - awayteam_score < -4
+    return 0
+  end
+end
+
+puts 'Creating fake points...'
+
+Match.all.each do |match|
+  if match.points?
+    Point.create(
+      match: match,
+      team: Team.find(match.hometeam_id),
+      pt: points(match.hometeam_score, match.awayteam_score)
+    )
+    Point.create(
+      match: match,
+      team: Team.find(match.awayteam_id),
+      pt: points(match.awayteam_score, match.hometeam_score)
+    )
+  end
+end
 
 puts 'seed done!'

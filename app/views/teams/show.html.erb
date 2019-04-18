@@ -1,0 +1,59 @@
+<!-- <h1>Teams#show</h1>
+<p>Find me in app/views/teams/show.html.erb</p> -->
+
+<h1><%= @team.name %></h1>
+
+<p><%= "From: #{@team.city}" unless  @team.city.nil? %></p>
+<p><%= "Numbers of players: #{@team.n_players}" unless  @team.n_players.nil? %></p>
+
+
+
+
+
+<% @datetime.each do |eachday| %>
+
+<%= eachday %>
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Time</th>
+      <th>Field</th>
+      <th>Team</th>
+      <th>Score</th>
+      <th>score</th>
+      <th>Team</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @matches.each do |match| %>
+    <% if match.day == eachday %>
+    <tr>
+      <td><%= match.where %></td>
+      <td><%= match.start_time.hour %>:<%= match.start_time.min%></td>
+      <td><%= match.field %></td>
+      <td><%= @team.name%></td>
+      <% if  @team.id == match.hometeam_id %>
+      <td><%= match.hometeam_score %></td>
+      <td><%= match.awayteam_score %></td>
+      <td><%= Team.find(match.awayteam_id).name %></td>
+      <td><%= Point.where(match: match, team: @team).first.pt %></td>
+      <% else %>
+      <td><%= match.awayteam_score%></td>
+      <td><%= match.hometeam_score %></td>
+      <td><%= Team.find(match.hometeam_id).name %></td>
+      <td><%= Point.where(match: match, team: @team).first.pt %></td>
+      <% end %>
+    </tr>
+
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<% end %>
+
+
+
+
