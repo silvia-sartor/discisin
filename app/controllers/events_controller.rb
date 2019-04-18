@@ -4,5 +4,13 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @matches = Match.where(event_id: @event.id)
+    @datetime = []
+    @locations = []
+    @matches.each { |match|
+      @datetime << match.day
+      @locations << match.where
+    }
+    @datetime.uniq!.sort!
+    @locations.uniq!
   end
 end

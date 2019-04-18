@@ -6,7 +6,38 @@
 
 <h1>GAMES</h1>
 
-<% @matches.each do |match| %>
-<p>When:</p><h2><%= match.day %></h2>
-<p>Where:</p><h2><%= match.where %></h2>
-<%end %>
+<% @datetime.each do |eachday| %>
+<% @locations.each do |location| %>
+<% same_day_loc = Match.where(day:eachday, where:location) %>
+<% if same_day_loc.empty? %>
+<% else %>
+<h3> <%= eachday %> </h3>
+<h3> <%= location %> </h3>
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Field</th>
+      <th>Team</th>
+      <th>Score</th>
+      <th>score</th>
+      <th>Team</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% same_day_loc.each do |match| %>
+    <tr>
+      <td><%= match.start_time.hour %>:<%= match.start_time.min%></td>
+      <td><%= match.field %></td>
+      <td><%= Team.find(match.hometeam_id).name %></td>
+      <td><%= match.hometeam_score %></td>
+      <td><%= match.awayteam_score%></td>
+      <td><%= Team.find(match.awayteam_id).name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+<% end %>
+<% end %>
+
