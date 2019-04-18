@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_222805) do
+ActiveRecord::Schema.define(version: 2019_04_18_171210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,11 +45,13 @@ ActiveRecord::Schema.define(version: 2019_04_11_222805) do
   create_table "matches", force: :cascade do |t|
     t.date "day"
     t.time "start_time"
+    t.string "name"
     t.integer "game_length"
     t.string "where"
     t.float "latitude"
     t.float "longitude"
     t.string "field"
+    t.boolean "points?", default: true
     t.integer "hometeam_score"
     t.integer "awayteam_score"
     t.integer "hometeam_sotg"
@@ -62,6 +64,16 @@ ActiveRecord::Schema.define(version: 2019_04_11_222805) do
     t.index ["awayteam_id"], name: "index_matches_on_awayteam_id"
     t.index ["event_id"], name: "index_matches_on_event_id"
     t.index ["hometeam_id"], name: "index_matches_on_hometeam_id"
+  end
+
+  create_table "points", force: :cascade do |t|
+    t.integer "pt"
+    t.bigint "team_id"
+    t.bigint "match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_points_on_match_id"
+    t.index ["team_id"], name: "index_points_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -103,6 +115,8 @@ ActiveRecord::Schema.define(version: 2019_04_11_222805) do
   add_foreign_key "matches", "events"
   add_foreign_key "matches", "teams", column: "awayteam_id"
   add_foreign_key "matches", "teams", column: "hometeam_id"
+  add_foreign_key "points", "matches"
+  add_foreign_key "points", "teams"
   add_foreign_key "teams", "events"
   add_foreign_key "teams", "users"
 end

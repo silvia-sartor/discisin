@@ -1,14 +1,27 @@
+<!-- <h1>Events#show</h1>
+<p>Find me in app/views/events/show.html.erb</p> -->
 
 <h1><%= @event.name %></h1>
+
+<div>
+<% @teams.each do |team|  %>
+<%= link_to team.name, event_team_path(@event,team), method: :get %>
+<%end %>
+</div>
+
+<div>
+  <%= link_to "Results", event_results_path(@event), method: :get %>
+</div>
 
 <p>When:</p><h2><%= @event.when %></h2>
 <p>Where:</p><h2><%= @event.where %></h2>
 
-<h1>GAMES</h1>
+<% @pools.each do |pool| %>
+<h1>GAMES <%= pool %>: </h1>
 
 <% @datetime.each do |eachday| %>
 <% @locations.each do |location| %>
-<% same_day_loc = Match.where(day:eachday, where:location) %>
+<% same_day_loc = Match.where(day:eachday, where:location, name: pool) %>
 <% if same_day_loc.empty? %>
 <% else %>
 <h3> <%= eachday %> </h3>
@@ -40,4 +53,4 @@
 <% end %>
 <% end %>
 <% end %>
-
+<% end %>
