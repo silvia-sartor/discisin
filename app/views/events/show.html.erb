@@ -8,9 +8,11 @@
 
 <% @datetime.each do |eachday| %>
 <% @locations.each do |location| %>
+<% same_day_loc = Match.where(day:eachday, where:location) %>
+<% if same_day_loc.empty? %>
+<% else %>
 <h3> <%= eachday %> </h3>
 <h3> <%= location %> </h3>
-<% same_day_loc = Match.where(day:eachday, where:location) %>
 <table>
   <thead>
     <tr>
@@ -35,6 +37,7 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 <% end %>
 <% end %>
 

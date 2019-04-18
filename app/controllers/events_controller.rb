@@ -10,7 +10,7 @@ class EventsController < ApplicationController
       @datetime << match.day
       @locations << match.where
     }
-    @datetime.uniq!
+    @datetime.uniq!.sort!
     @locations.uniq!
   end
 end
