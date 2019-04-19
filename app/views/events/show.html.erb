@@ -42,10 +42,10 @@
     <tr>
       <td><%= match.start_time.hour %>:<%= match.start_time.min%></td>
       <td><%= match.field %></td>
-      <td><%= Team.find(match.hometeam_id).name %></td>
+      <td><%= match.hometeam.name %></td>
       <td><%= match.hometeam_score %></td>
       <td><%= match.awayteam_score%></td>
-      <td><%= Team.find(match.awayteam_id).name %></td>
+      <td><%= match.awayteam.name %></td>
     </tr>
     <% end %>
   </tbody>

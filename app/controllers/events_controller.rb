@@ -13,7 +13,6 @@ class EventsController < ApplicationController
       @teampools << team
     }
     @teampools.uniq!
-
   end
 
   private
@@ -32,7 +31,7 @@ class EventsController < ApplicationController
 
   def find_matches
     @matches = Match.where(event: @event)
-        @datetime = []
+    @datetime = []
     @locations = []
     @pools = []
     @matches.each { |match|
