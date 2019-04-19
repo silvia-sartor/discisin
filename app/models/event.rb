@@ -3,5 +3,4 @@ class Event < ApplicationRecord
   has_many :matches, :dependent => :destroy
   has_many :teams, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
-
 end

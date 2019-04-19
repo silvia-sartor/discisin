@@ -293,18 +293,22 @@ end
 
 puts 'Creating fake points...'
 
-Match.all.each do |match|
+n = 1
+matches = Match.all
+matches.each do |match|
   if match.points?
     Point.create(
-      match: match,
-      team: Team.find(match.hometeam_id),
+      match_id: match.id,
+      team_id: Team.find(match.hometeam_id).id,
       pt: points(match.hometeam_score, match.awayteam_score)
     )
     Point.create(
-      match: match,
-      team: Team.find(match.awayteam_id),
+      match_id: match.id,
+      team_id: Team.find(match.awayteam_id).id,
       pt: points(match.awayteam_score, match.hometeam_score)
     )
+    puts "#{n}"
+    n += 1
   end
 end
 
