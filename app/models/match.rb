@@ -1,4 +1,5 @@
 class Match < ApplicationRecord
   belongs_to :event
-  has_many :points, :dependent => :destroy
+  belongs_to :awayteam, class_name: 'Team', foreign_key: 'awayteam_id'
+  belongs_to :hometeam, class_name: 'Team', foreign_key: 'hometeam_id'
 end
