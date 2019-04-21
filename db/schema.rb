@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(version: 2019_04_18_171210) do
 
   create_table "points", force: :cascade do |t|
     t.integer "pt"
+    t.integer "metefatte"
+    t.integer "metesubite"
+    t.integer "metedifference"
     t.bigint "team_id"
     t.bigint "match_id"
     t.datetime "created_at", null: false
