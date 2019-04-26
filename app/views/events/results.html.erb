@@ -19,7 +19,7 @@
       <th>Points</th>
     </tr>
   </thead>
-<% @teampools.each do |teameach| %>
+<% @teams.each do |teameach| %>
 <% same_pool = Match.where(event: @event, name: pool, hometeam: teameach) + Match.where(event: @event, name: pool, awayteam: teameach) %>
 <% if same_pool.empty? %>
 <% else %>
@@ -49,4 +49,11 @@
 <% end %>
 </table>
 <% end %>
+</div>
+
+<div>
+  <%= render partial: "events/shared/partials/poolsresults" %>
+
+<%#= render partial: "dogs/partials/#{@user.role}_profile", locals: {user: @user} %>
+
 </div>

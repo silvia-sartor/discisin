@@ -277,38 +277,45 @@ match_due = Match.create(
   awayteam_score:11
 )
 
-
-
 def points(hometeam_score, awayteam_score)
   if hometeam_score - awayteam_score >= 4
     return 3
   elsif hometeam_score - awayteam_score > 0
     return 2
-  elsif hometeam_score - awayteam_score >= -4
+  elsif hometeam_score - awayteam_score > -4
     return 1
-  else hometeam_score - awayteam_score < -4
+  else hometeam_score - awayteam_score <= -4
     return 0
   end
 end
 
+
 puts 'Creating fake points...'
 
-n = 1
+# n = 1
 matches = Match.all
 matches.each do |match|
+
   if match.points?
+
     Point.create(
       match_id: match.id,
       team_id: Team.find(match.hometeam_id).id,
-      pt: points(match.hometeam_score, match.awayteam_score)
+      pt: points(match.hometeam_score, match.awayteam_score),
+      metefatte: match.hometeam_score,
+      metesubite: match.awayteam_score,
+      metedifference: match.hometeam_score - match.awayteam_score
     )
     Point.create(
       match_id: match.id,
       team_id: Team.find(match.awayteam_id).id,
-      pt: points(match.awayteam_score, match.hometeam_score)
+      pt: points(match.awayteam_score, match.hometeam_score),
+      metefatte: match.awayteam_score,
+      metesubite: match.hometeam_score,
+      metedifference: match.awayteam_score - match.hometeam_score
     )
-    puts "#{n}"
-    n += 1
+    # puts "#{n}"
+    # n += 1
   end
 end
 

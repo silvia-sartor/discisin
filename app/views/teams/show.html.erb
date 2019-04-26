@@ -38,12 +38,15 @@
       <td><%= match.hometeam_score %></td>
       <td><%= match.awayteam_score %></td>
       <td><%= match.awayteam.name %></td>
-      <td><%= Point.where(match: match, team: @team).first.pt %></td>
       <% else %>
       <td><%= match.awayteam_score%></td>
       <td><%= match.hometeam_score %></td>
       <td><%= match.hometeam.name %></td>
-      <td><%= Point.where(match: match, team: @team).first.pt %></td>
+      <% end %>
+      <% if match.points? %>
+        <td><%= Point.where(match: match, team: @team).first.pt %></td>
+      <% else %>
+        <td><%= "-" %> </td>
       <% end %>
     </tr>
 
