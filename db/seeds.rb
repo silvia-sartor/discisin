@@ -282,9 +282,9 @@ def points(hometeam_score, awayteam_score)
     return 3
   elsif hometeam_score - awayteam_score > 0
     return 2
-  elsif hometeam_score - awayteam_score >= -4
+  elsif hometeam_score - awayteam_score > -4
     return 1
-  else hometeam_score - awayteam_score < -4
+  else hometeam_score - awayteam_score <= -4
     return 0
   end
 end

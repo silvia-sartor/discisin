@@ -1,0 +1,36 @@
+
+
+
+<div>
+  <% @pool_seeding.each do |pool| %>
+  <h2> Girone <%= pool[0] %>: </h2>
+  <table>
+    <thead>
+      <th>TEAM</th>
+      <th>PT</th>
+      <th>GAME</th>
+      <th>W</th>
+      <th>L</th>
+      <th>MF</th>
+      <th>MS</th>
+      <th>MD</th>
+    </thead>
+    <% pool[1].each do |team| %>
+    <tbody>
+      <tr>
+        <td><%= team[:team].name %></td>
+        <td><%= team[:pt] %></td>
+        <td><%= team[:game] %></td>
+        <td><%= team[:w] %></td>
+        <td><%= team[:l] %></td>
+        <td><%= team[:mf] %></td>
+        <td><%= team[:ms] %></td>
+        <td><%= team[:md] %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <% end %>
+</div>
+
+
