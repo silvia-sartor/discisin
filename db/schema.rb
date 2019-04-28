@@ -64,8 +64,6 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
     t.boolean "points?", default: true
     t.integer "hometeam_score"
     t.integer "awayteam_score"
-    t.integer "hometeam_sotg"
-    t.integer "awayteam_sotg"
     t.bigint "hometeam_id"
     t.bigint "awayteam_id"
     t.datetime "created_at", null: false

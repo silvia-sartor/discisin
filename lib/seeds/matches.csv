@@ -1,7 +1,7 @@
-field, address,day_time, hometeam_score, hometeam, awayteam, awayteam_score, name
-Campo 1, Fano italia,  09:00, 80,  15,  CUSB Fotta Red, Spaccamadoni,  11,  MA
-Campo 1, Fano italia,  10:30, 80  14,  CUSB Red Bulls,  CUS Padova Barbastreji,  6, MA
-Campo 1, Fano italia,  12:00, 80,  15,  CUSB Fotta Red,  CUSB Zero51, 13,  MA
-Campo 1, Fano italia,   13:30, 80,  7, CUS Padova Barbastreji,  Cota Viet, 15,  MA
-Campo 1, Fano italia,  15:00, 80,  12,  CUSB Zero51, Spaccamadoni,  13,  MA
-Campo 1, Fano italia,   16:30, 80, 15,  CUSB Red Bulls,  Cota Viet, 9, MA
+field,address,day_time,game_length,hometeam_score,hometeam,awayteam,awayteam_score,name
+Campo 1,Fano italia,09:00,80,15,CUSB Fotta Red,Spaccamadoni,11,MA
+Campo 1,Fano italia,10:30,80,14,CUSB Red Bulls,CUS Padova Barbastreji,6,MA
+Campo 1,Fano italia,12:00,80,15,CUSB Fotta Red,CUSB Zero51,13,MA
+Campo 1,Fano italia,13:30,80,7,CUS Padova Barbastreji,Cota Viet,15,MA
+Campo 1,Fano italia,15:00,80,12,CUSB Zero51,Spaccamadoni,13,MA
+Campo 1,Fano italia,16:30,80,15,CUSB Red Bulls,Cota Viet,9,MA

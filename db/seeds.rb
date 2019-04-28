@@ -1,15 +1,15 @@
 require 'csv'
 
 puts 'Cleaning database...'
-# Favorite.destroy_all
-# Category.destroy_all
-# Member.destroy_all
-# Point.destroy_all
-# Sotg.destroy_all
-# Match.destroy_all
-# Team.destroy_all
-# Event.destroy_all
-# User.destroy_all
+Favorite.destroy_all
+Category.destroy_all
+Member.destroy_all
+Point.destroy_all
+Sotg.destroy_all
+Match.destroy_all
+Team.destroy_all
+Event.destroy_all
+User.destroy_all
 
 puts 'Creating fake admin...'
 
@@ -46,14 +46,14 @@ categories_wb = Category.create(
 
 puts 'Creating fake teams...'
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'teams.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-csv.each do |row|
+csv_text2 = File.read(Rails.root.join('lib', 'seeds', 'teams.csv'))
+csv2 = CSV.parse(csv_text2, :headers => true, :encoding => 'ISO-8859-1')
+csv2.each do |row|
   t = Team.new
-  t.user_id = User.first.id
+  t.user = User.where(firstname: "admin").first
   t.name = row['name']
   t.city = row['city']
-  t.category = Category.where(cat: row['category']).first
+  t.category = Category.where(cat: row['category'], event: Event.first).first
   t.save
 end
 
@@ -82,10 +82,9 @@ csv.each do |row|
   t.game_length = row['game_length']
   t.hometeam = Team.where(name: row['hometeam']).first
   t.hometeam_score = row['hometeam_score'].to_i
-  t.awayteam = Team.where(name:row['awayteam']).first
+  t.awayteam = Team.where(name: row['awayteam']).first
   t.awayteam_score = row['awayteam_score'].to_i
   t.save
-  puts "#{t.name}, #{t.field} saved"
 end
 
 puts 'Creating fake points...'
