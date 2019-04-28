@@ -1,11 +1,10 @@
 class CreateMatches < ActiveRecord::Migration[5.2]
   def change
     create_table :matches do |t|
-      t.date :day
-      t.time :start_time
+      t.datetime :day_time
       t.string :name
       t.integer :game_length
-      t.string :where
+      t.string :address
       t.float :latitude
       t.float :longitude
       t.string :field
@@ -16,7 +15,6 @@ class CreateMatches < ActiveRecord::Migration[5.2]
       t.integer :awayteam_sotg, default: nil
       t.references :hometeam, foreign_key: {to_table: :teams}
       t.references :awayteam, foreign_key: {to_table: :teams}
-      t.references :event, foreign_key: true
 
       t.timestamps
     end

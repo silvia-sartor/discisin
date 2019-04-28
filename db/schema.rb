@@ -10,23 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_171210) do
+ActiveRecord::Schema.define(version: 2019_04_18_171223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.boolean "show_teams?", default: false
+    t.boolean "show_schedule?", default: false
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_categories_on_event_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.date "when"
-    t.string "where"
+    t.string "city"
     t.float "latitude"
     t.float "longitude"
     t.float "price"
     t.string "currency"
     t.text "description"
-    t.string "categories"
     t.string "links"
     t.string "contact"
+    t.string "picture"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171210) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.boolean "notification?", default: true
     t.bigint "user_id"
     t.bigint "event_id"
     t.datetime "created_at", null: false
@@ -43,11 +54,10 @@ ActiveRecord::Schema.define(version: 2019_04_18_171210) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.date "day"
-    t.time "start_time"
+    t.datetime "day_time"
     t.string "name"
     t.integer "game_length"
-    t.string "where"
+    t.string "address"
     t.float "latitude"
     t.float "longitude"
     t.string "field"
@@ -58,12 +68,20 @@ ActiveRecord::Schema.define(version: 2019_04_18_171210) do
     t.integer "awayteam_sotg"
     t.bigint "hometeam_id"
     t.bigint "awayteam_id"
-    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["awayteam_id"], name: "index_matches_on_awayteam_id"
-    t.index ["event_id"], name: "index_matches_on_event_id"
     t.index ["hometeam_id"], name: "index_matches_on_hometeam_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.boolean "accepted?", default: false
+    t.bigint "team_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_members_on_team_id"
+    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "points", force: :cascade do |t|
@@ -79,18 +97,28 @@ ActiveRecord::Schema.define(version: 2019_04_18_171210) do
     t.index ["team_id"], name: "index_points_on_team_id"
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.string "category"
-    t.integer "n_players"
-    t.string "city"
-    t.integer "rating"
-    t.boolean "accepted"
-    t.bigint "user_id"
-    t.bigint "event_id"
+  create_table "sotgs", force: :cascade do |t|
+    t.integer "sotg_score"
+    t.bigint "voting_team_id"
+    t.bigint "voted_team_id"
+    t.bigint "match_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_teams_on_event_id"
+    t.index ["match_id"], name: "index_sotgs_on_match_id"
+    t.index ["voted_team_id"], name: "index_sotgs_on_voted_team_id"
+    t.index ["voting_team_id"], name: "index_sotgs_on_voting_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.integer "rating"
+    t.boolean "accepted?", default: false
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_teams_on_category_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
@@ -108,18 +136,24 @@ ActiveRecord::Schema.define(version: 2019_04_18_171210) do
     t.date "birthday"
     t.string "phone"
     t.string "city"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories", "events"
   add_foreign_key "events", "users"
   add_foreign_key "favorites", "events"
   add_foreign_key "favorites", "users"
-  add_foreign_key "matches", "events"
   add_foreign_key "matches", "teams", column: "awayteam_id"
   add_foreign_key "matches", "teams", column: "hometeam_id"
+  add_foreign_key "members", "teams"
+  add_foreign_key "members", "users"
   add_foreign_key "points", "matches"
   add_foreign_key "points", "teams"
-  add_foreign_key "teams", "events"
+  add_foreign_key "sotgs", "matches"
+  add_foreign_key "sotgs", "teams", column: "voted_team_id"
+  add_foreign_key "sotgs", "teams", column: "voting_team_id"
+  add_foreign_key "teams", "categories"
   add_foreign_key "teams", "users"
 end
