@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "cat"
     t.boolean "show_teams?", default: false
     t.boolean "show_schedule?", default: false
     t.bigint "event_id"
