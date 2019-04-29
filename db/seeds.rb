@@ -2,12 +2,12 @@ require 'csv'
 
 puts 'Cleaning database...'
 Favorite.destroy_all
-Category.destroy_all
 Member.destroy_all
 Point.destroy_all
 Sotg.destroy_all
 Match.destroy_all
 Team.destroy_all
+Category.destroy_all
 Event.destroy_all
 User.destroy_all
 
@@ -42,6 +42,10 @@ categories_ma = Category.create(
 categories_wb = Category.create(
   event_id: Event.first.id,
   cat: "WB"
+  )
+categories_mb = Category.create(
+  event_id: Event.first.id,
+  cat: "MB"
   )
 
 puts 'Creating fake teams...'

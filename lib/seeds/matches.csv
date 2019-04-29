@@ -1,7 +1,71 @@
 field,address,day_time,game_length,hometeam_score,hometeam,awayteam,awayteam_score,name
-Campo 1,Fano italia,09:00,80,15,CUSB Fotta Red,Spaccamadoni,11,MA
-Campo 1,Fano italia,10:30,80,14,CUSB Red Bulls,CUS Padova Barbastreji,6,MA
-Campo 1,Fano italia,12:00,80,15,CUSB Fotta Red,CUSB Zero51,13,MA
-Campo 1,Fano italia,13:30,80,7,CUS Padova Barbastreji,Cota Viet,15,MA
-Campo 1,Fano italia,15:00,80,12,CUSB Zero51,Spaccamadoni,13,MA
-Campo 1,Fano italia,16:30,80,15,CUSB Red Bulls,Cota Viet,9,MA
+Campo 1,Fano italia,2019-3-17 09:00,80,15,CUSB Fotta Red,Spaccamadoni,11,MA1
+Campo 1,Fano italia,2019-3-17 10:30,80,14,CUSB Red Bulls,CUS Padova Barbastreji,6,MA1
+Campo 1,Fano italia,2019-3-17 12:00,80,15,CUSB Fotta Red,CUSB Zero51,13,MA1
+Campo 1,Fano italia,2019-3-17 13:30,80,7,CUS Padova Barbastreji,Cota Viet,15,MA1
+Campo 1,Fano italia,2019-3-17 15:00,80,12,CUSB Zero51,Spaccamadoni,13,MA1
+Campo 1,Fano italia,2019-3-17 16:30,80,15,CUSB Red Bulls,Cota Viet,9,MA1
+Campo 1,Via del carpentiere Bologna Italia,2019-3-17 09:00,80,15,CUSB Fotta White,DiscoBolo,5,MA2
+Campo 1,Via del carpentiere Bologna Italia,2019-3-17 10:30,80,8,Canieporci,Donkey Divers, 15,MA2
+Campo 1,Via del carpentiere Bologna Italia,2019-3-17 12:00,80,15,CUSB Fotta White,Cotarica,9,MA2
+Campo 1,Via del carpentiere Bologna Italia,2019-3-17 13:30,80,13,Canieporci,Beefree,11,MA2
+Campo 1,Via del carpentiere Bologna Italia,2019-3-17 15:00,80,7,DiscoBolo,Donkey Divers,14,MA2
+Campo 1,Via del carpentiere Bologna Italia,2019-3-17 16:30,80,15,Cotarica,Beefree,3,MA2
+Campo 1,Via Tirandi Brescia Italia,2019-3-17 09:00,80,5,Ultimate CUS Brescia,Alligators,15,MB1
+Campo 1,Via Tirandi Brescia Italia,2019-3-17 10:30,80,12,Frasba dal Lac,CUSB History One,11,MB1
+Campo 1,Via Tirandi Brescia Italia,2019-3-17 12:00,80,15,Gremlins,CUS Padova Barbari,11,MB1
+Campo 1,Via Tirandi Brescia Italia,2019-3-17 13:30,80,14,Voladora,PGS Rams,13,MB2
+Campo 1,Via Tirandi Brescia Italia,2019-3-17 15:00,80,15,Frasba dal Lac,Gremlins,10,MB1
+Campo 1,Via Tirandi Brescia Italia,2019-3-17 16:30,80,11,45 Giri,PGS Rams,15,MB2
+Campo 2,Via Tirandi Brescia Italia,2019-3-17 09:00,80,10,Voladora,Ultimate Bergamo,11,MB2
+Campo 2,Via Tirandi Brescia Italia,2019-3-17 10:30,80,15,45 Giri,Extradry,6,MB2
+Campo 2,Via Tirandi Brescia Italia,2019-3-17 12:00,80,15,Ultimate Bergamo,Discover,7,MB2
+Campo 2,Via Tirandi Brescia Italia,2019-3-17 13:30,80,9,Ultimate CUS Brescia,CUSB History One,15,MB1
+Campo 2,Via Tirandi Brescia Italia,2019-3-17 15:00,80,15,Alligators,CUS Padova Barbari,9,MB1
+Campo 2,Via Tirandi Brescia Italia,2019-3-17 16:30,80,7,Extradry,Discover,15,MB2
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-3-17 09:00,80,15,CUS Padova Tane Malefiche,2DPick,5,WBN
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-3-17 10:30,80,15,Donkey Divers Ladies,Fireflies,11,WBN
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-3-17 12:00,80,10,HUB,CUS Padova Tane Malefiche,15,WBN
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-3-17 13:30,80,12,Donkey Divers Ladies,CUSB Red Bulle West,15,WBN
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-3-17 15:00,80,15,Fireflies,2DPick,WBN
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-3-17 16:30,80,15,HUB,CUSB Red Bulle West,11,WBN
+Campo 1,Via Marco Emilio Lepido 196 Bologna Italia,2019-3-17 09:00,80,8,Alligators Ladies,BBCP,14,WBS
+Campo 1,Via Marco Emilio Lepido 196 Bologna Italia,2019-3-17 10:30,80,13,CUSB Yell,CUSB Red Bulle East,7,WBS
+Campo 1,Via Marco Emilio Lepido 196 Bologna Italia,2019-3-17 12:00,80,10,Alligators Ladies,Tequila Boom Baby,8,WBS
+Campo 1,Via Marco Emilio Lepido 196 Bologna Italia,2019-3-17 13:30,80,15,BBCP,CUSB Red Bulle East,3,WBS
+Campo 1,Via Marco Emilio Lepido 196 Bologna Italia,2019-3-17 15:00,80,15,CUSB Yell,Tequila Boom Baby,3,WBS
+Campo 1,Via del carpentiere Bologna Italia,2019-4-14 10:30,80,14,CUSB Zero51,CUS Padova Barbastreji,8,MA1
+Campo 1,Via del carpentiere Bologna Italia,2019-4-14 12:00,80,15,CUSB Red Bulls,Spaccamadoni,10,MA1
+Campo 1,Via del carpentiere Bologna Italia,2019-4-14 13:30,80,11,CUSB Zero51,Cota Viet,12,MA1
+Campo 1,Via del carpentiere Bologna Italia,2019-4-14 15:00,80,9,CUS Padova Barbastreji,Spaccamadoni,15,MA1
+Campo 1,Via del carpentiere Bologna Italia,2019-4-14 16:30,80,15,CUSB Fotta Red,Cota Viet,11,MA1
+Campo 1,Via del carpentiere Bologna Italia,2019-4-14 18:00,80,15,CUSB Fotta Red,CUSB Red Bulls,13,MA1
+Campo 1,piazzale del popolo Rimini Italia,019-4-14 09:00,80,15,Cotarica,Canieporci,8,MA2
+Campo 1,piazzale del popolo Rimini Italia,019-4-14 10:30,80,12,BBCP,Tequila Boom Baby,11,WBS
+Campo 1,piazzale del popolo Rimini Italia,019-4-14 12:00,80,15,DiscoBolo,Canieporci,6,MA2
+Campo 1,piazzale del popolo Rimini Italia,019-4-14 13:30,80,10,Alligators Ladies,CUSB Red Bulle East,8,WBS
+Campo 1,piazzale del popolo Rimini Italia,019-4-14 15:00,80,15,Cotarica,DiscoBolo,0,MA2
+Campo 1,piazzale del popolo Rimini Italia,019-4-14 16:30,80,8,CUSB Red Bulle East,Tequila Boom Baby,12,WBS
+Campo 2,piazzale del popolo Rimini Italia,019-4-14 09:00,80,14,Alligators,Gremlins,6,MB1
+Campo 2,piazzale del popolo Rimini Italia,019-4-14 10:30,80,4,Alligators Ladies,CUSB Yell,12,WBS
+Campo 2,piazzale del popolo Rimini Italia,019-4-14 12:00,80,9,Alligators,CUSB History One,11,MB1
+Campo 2,piazzale del popolo Rimini Italia,019-4-14 13:30,80,3,BBCP,CUSB Yell,10,WBS
+Campo 2,piazzale del popolo Rimini Italia,019-4-14 15:00,80,9,Gremlins,CUSB History One,10,MB1
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-4-14 11:30,80,15,CUSB Fotta White,Beefree,1,MA2
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-4-14 14:30,80,15,Donkey Divers,Beefree,5,MA2
+Campo 1,Via Jacopo Corrado 4 Padova Italia,2019-4-14 17:30,80,15,CUSB Fotta White,Donkey Divers,13,MA2
+Campo 1,Via Cardinal Schuster Rescaldina (MI) Italia,19-4-14 10:00,80,11,Ultimate CUS Brescia,Frasba dal Lac,15,MB1
+Campo 1,Via Cardinal Schuster Rescaldina (MI) Italia,2019-4-14 13:00,80,15,Ultimate CUS Brescia,CUS Padova Barbari,10,MB1
+Campo 1,Via Cardinal Schuster Rescaldina (MI) Italia,2019-4-14 16:00,80,15,Frasba dal Lac,CUS Padova Barbari,9,MB1
+Campo 1,via Clemente Colelli 2 Mogliano Veneto (TV) Italia,2019-4-14 10:00,80,15,Ultimate Bergamo,Extradry,3,MB2
+Campo 1,via Clemente Colelli 2 Mogliano Veneto (TV) Italia,2019-4-14 11:30,80,14,Voladora,Discover,9,MB2
+Campo 1,via Clemente Colelli 2 Mogliano Veneto (TV) Italia,2019-4-14 13:00,80,15,Ultimate Bergamo,PGS Rams,7,MB2
+Campo 1,via Clemente Colelli 2 Mogliano Veneto (TV) Italia,2019-4-14 14:30,80,15,Voladora,45 Giri,6,MB2
+Campo 1,via Clemente Colelli 2 Mogliano Veneto (TV) Italia,2019-4-14 16:00,80,5,Extradry,PGS Rams,15,MB2
+Campo 1,via Clemente Colelli 2 Mogliano Veneto (TV) Italia,2019-4-14 17:30,80,12,45 Giri,Discover,15,MB2
+Campo 1,Via del Sale 60 Cremona Italia,2019-4-14 09:00,80,11,Donkey Divers Ladies,HUB,13,WBN
+Campo 1,Via del Sale 60 Cremona Italia,2019-4-14 10:30,80,13,Fireflies,CUSB Red Bulle West,7,WBN
+Campo 1,Via del Sale 60 Cremona Italia,2019-4-14 12:00,80,15,Donkey Divers Ladies,2DPick,4,WBN
+Campo 1,Via del Sale 60 Cremona Italia,2019-4-14 13:30,80,8,Fireflies,CUS Padova Tane Malefiche,11,WBN
+Campo 1,Via del Sale 60 Cremona Italia,2019-4-14 15:00,80,15,HUB,2DPick,5,WBN
+Campo 1,Via del Sale 60 Cremona Italia,2019-4-14 16:30,80,15,CUS Padova Tane Malefiche,CUSB Red Bulle West,11,WBN
