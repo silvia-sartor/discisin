@@ -1,0 +1,141 @@
+voting_team,voted_team,sotg_score1,sotg_score2,sotg_score3,sotg_score4, sotg_score5
+
+2DPick,CUS Padova Tane Malefiche,2,2,2,3,2
+2DPick,Fireflies,2,2,2,2,2
+2DPick,Donkey Divers Ladies,1,2,2,2,2
+2DPick,HUB,2,2,2,3,2
+Alligators Ladies,CUSB BBCP,2,2,2,3,2
+Alligators Ladies,Tequila Boom Baby,2,2,3,2,2
+Alligators Ladies,CUSB Yell,3,1,2,2,3
+Alligators Ladies,CUSB Red Bulle East,2,2,2,2,2
+CUS Padova Tane Malefiche 2DPick,2,2,2,2,2
+CUS Padova Tane Malefiche HUB,2,2,3,3,2
+CUS Padova Tane Malefiche Fireflies,1,2,2,2,1
+CUS Padova Tane Malefiche CUSB Red Bulle West,2,2,2,3,2
+CUSB BBCP,Alligators Ladies 2 1 2 3,2
+CUSB BBCP,CUSB Red Bulle East 1 2 3 2,2
+CUSB BBCP,Tequila Boom Baby 2 1 2 3,2
+CUSB BBCP,CUSB Yell 2 2 2 2,2
+CUSB Red Bulle East,CUSB Yell,2,3,3,3,3
+CUSB Red Bulle East,CUSB BBCP,2,2,2,3,2
+CUSB Red Bulle East,Alligators Ladies,2,1,2,2,2
+CUSB Red Bulle East,Tequila Boom Baby,1,1,2,1,2
+CUSB Red Bulle East,Tequila Boom Baby,1,1,2,1,2
+CUSB Red Bulle West,Donkey Divers Ladies,3,2,2,2,2
+CUSB Red Bulle West,HUB,1,2,1,2,1
+CUSB Red Bulle West,Fireflies,2,2,2,3,2
+CUSB Red Bulle West,CUS Padova Tane Malefiche,2,2,3,3,2
+CUSB Yell,CUSB Red Bulle East,2,1,3,2,2
+CUSB Yell,Tequila Boom Baby,1,2,2,3,2
+CUSB Yell,Alligators Ladies,2,1,3,3,2
+CUSB Yell,CUSB BBCP,2,2,3,3,2
+Donkey Divers Ladies,Fireflies,2,2,3,2,2
+Donkey Divers Ladies,CUSB Red Bulle West,2,2,2,2,2
+Donkey Divers Ladies,HUB,2,2,2,2,2
+Donkey Divers Ladies,2DPick,2,2,2,3,2
+Fireflies,Donkey Divers Ladies,2,2,2,2,2
+Fireflies,2DPick,2,2,3,3,2
+Fireflies,CUSB Red Bulle West,1,2,2,3,2
+Fireflies,CUS Padova Tane Malefiche,1,2,2,2,2
+HU,CUS Padova Tane Malefiche,2,2,2,3,2
+HU,CUSB Red Bulle West,2,2,2,1,1
+HU,Donkey Divers Ladies,2,2,2,2,2
+HU,2DPick,2,2,2,3,2
+Tequila Boom Baby,CUSB Yell,2,2,2,2,2
+Tequila Boom Baby,Alligators Ladies,2,3,2,2,2
+Tequila Boom Baby,CUSB BBCP,2,2,2,2,2
+Tequila Boom Baby,CUSB Red Bulle East,2,2,2,2,2
+Spaccamadoni,CUSB Fotta Red,2,2,2,2,2
+Donkey Divers,Canieporci,2,2,2,2,2
+CUSB Red Bulls,CUS Padova Barbastreji,2,2,2,2,2
+CUS Padova Barbastreji,CUSB Red Bulls,2,2,2,2,3
+Cotarica,CUSB Fotta White,2,2,2,2,2
+CUSB Zero51,CUSB Fotta Red,2,1,2,3,3
+CUSB Fotta Red,CUSB Zero51,2,2,3,3,3
+CUSB Fotta Red,Spaccamadoni,2,2,2,2,2
+Cota Viet,CUS Padova Barbastreji,1,2,2,2,2
+CUS Padova Barbastreji,Cota Viet,2,2,2,2,2
+Beefree,Canieporci,2,2,2,3,2
+Canieporci,Donkey Divers,2,2,2,3,2
+Canieporci,Beefree,1,2,2,2,2
+Spaccamadoni,CUSB Zero51,2,2,3,3,2
+Donkey Divers,DiscoBolo,2,2,2,2,2
+DiscoBolo,CUSB Fotta White,2,2,2,2,2
+DiscoBolo,Donkey Divers,2,2,2,2,2
+Cotarica,Beefree,2,2,2,2,2
+Beefree,Cotarica,2,2,2,3,2
+CUSB Zero51,Spaccamadoni,1,2,2,2,3
+Cota Viet,CUSB Red Bulls,2,2,2,2,2
+CUSB Red Bulls,Cota Viet,2,2,2,3,2
+CUSB Fotta White,DiscoBolo,2,2,2,2,2
+CUSB Fotta White,Cotarica,2,2,2,2,2
+CUS Padova Barbastreji,CUSB Zero51,1,2,2,2,2
+Beefree,CUSB Fotta White,2,2,2,2,2
+Spaccamadoni,CUSB Red Bulls,2,2,3,3,2
+Canieporci,Cotarica,2,2,2,2,2
+Canieporci,DiscoBolo,1,2,2,2,2
+CUSB Red Bulls,Spaccamadoni,2,2,2,2,2
+Donkey Divers,Beefree,1,2,2,2,2
+Beefree,Donkey Divers,2,1,2,2,2
+Cotarica,Canieporci,2,2,2,2,3
+CUS Padova Barbastreji,Spaccamadoni,2,2,2,2,2
+Cotarica,DiscoBolo,2,2,2,2,2
+DiscoBolo,Cotarica,2,2,2,2,2
+DiscoBolo,Canieporci,2,2,2,2,2
+Cota Viet,CUSB Zero51,2,2,2,1,2
+Cota Viet,CUSB Fotta Red,2,2,2,2,2
+CUSB Zero51,CUS Padova Barbastreji,2,2,2,2,2
+CUSB Zero51,Cota Viet,2,2,2,3,1
+CUSB Fotta White,Beefree,2,2,2,2,2
+CUSB Fotta White,Donkey Divers,2,2,2,3,2
+Donkey Divers,CUSB Fotta White,2,2,3,2,2
+CUSB Red Bulls,CUSB Fotta Red,2,2,2,2,2
+CUSB Fotta Red,Cota Viet,2,2,2,2,3
+CUSB Fotta Red,CUSB Red Bulls,2,2,3,2,3
+Spaccamadoni,CUS Padova Barbastreji,2,2,2,3,2
+Alligators,Ultimate CUS Brescia,2,2,3,3,2
+Ultimate CUS Brescia,Alligators,2,2,2,3,2
+Frasba dal Lac,CUSB History One,2,1,3,3,2
+Extradry,45 Giri,2,2,3,3,2
+CUSB History One,Frasba dal Lac,2,2,3,2,2
+45 Giri,Extradry,2,1,2,1,1
+Ultimate Bergamo,Voladora,2,2,2,1,2
+Ultimate Bergamo,Discover,2,2,2,2,2
+Discover,Ultimate Bergamo,2,2,2,2,2
+Ultimate CUS Brescia,CUSB History One,1,2,2,2,3
+CUSB History One,Ultimate CUS Brescia,2,3,3,2,2
+PGS Rams,Voladora,1,1,2,2,2
+Frasba dal Lac,Gremlins,2,2,2,3,2
+Alligators,CUS Padova Barbari,3,2,1,1,2
+Gremlins,CUS Padova Barbari,1,2,3,2,2
+Gremlins,Frasba dal Lac,2,2,2,2,2
+PGS Rams,45 Giri,2,2,2,3,3
+Discover,Extradry,1,2,1,2,2
+CUS Padova Barbari,Gremlins,2,2,2,2,1
+CUS Padova Barbari,Alligators,2,2,2,3,2
+Extradry,Discover,2,2,3,2,1
+45 Giri,PGS Rams,2,2,2,3,3
+Gremlins,Alligators,2,2,2,3,2
+Alligators,Gremlins,3,1,2,2,1
+Ultimate Bergamo,Extradry,2,2,2,2,2
+Ultimate CUS Brescia,Frasba dal Lac,2,2,3,2,2
+Frasba dal Lac,Ultimate CUS Brescia,2,2,2,3,3
+Discover,Voladora,1,2,2,1,2
+PGS Rams,Ultimate Bergamo,2,2,2,2,2
+Ultimate CUS Brescia,CUS Padova Barbari,2,2,2,2,1
+Voladora,Discover,2,2,2,2,2
+Ultimate,Bergamo PGS Rams,2,2,3,3,2
+Voladora,45 Giri,2,2,3,2,2
+Frasba dal Lac,CUS Padova Barbari,2,1,2,2,2
+CUSB History One,Alligators,2,2,1,1,1
+CUSB History One,Gremlins,2,2,1,2,2
+PGS Rams,Extradry,1,2,3,3,2
+CUS Padova Barbari,Frasba dal Lac,2,1,1,2,2
+CUS Padova Barbari,Ultimate CUS Brescia,2,2,3,2,2
+Gremlins,CUSB History One,1,1,2,2,2
+45 Giri,Discover,3,2,3,3,3
+45 Giri,Voladora,2,2,3,3,2
+Discover,45 Giri,2,2,3,3,2
+Alligators,CUSB History One,1,2,1,1,2
+Extradry,Ultimate Bergamo,2,2,2,2,2
+Extradry,PGS Rams,2,2,2,2,2

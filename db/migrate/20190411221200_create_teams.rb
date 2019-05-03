@@ -4,7 +4,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :city
       t.integer :rating
-      t.boolean :accepted?,  default: false
+      t.boolean :accepted,  default: false
       t.references :user, foreign_key: true
       t.references :category, foreign_key: true
 

@@ -25,12 +25,33 @@ puts 'Creating fake event...'
 
 event = Event.create(
   name: "CIU",
-  when: "2019-04-15",
+  when: "2019-05-05",
   city: "Italia",
   price: 30.00,
   currency: "euro",
   contact: "segreteria@fifd.it",
-  user_id: User.first.id
+  user_id: User.first.id,
+  picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDdh3SeK71DJWGjgQy4yWUsEF0Bxa2eH8H0VcYv18Ba-hFA4O"
+)
+
+event = Event.create(
+  name: "Tappa MA MB WB",
+  when: "2019-03-17",
+  city: "Italia",
+  contact: "segreteria@fifd.it",
+  user_id: User.first.id,
+  links: "vedi ciu",
+  picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDdh3SeK71DJWGjgQy4yWUsEF0Bxa2eH8H0VcYv18Ba-hFA4O"
+)
+
+event = Event.create(
+  name: "Tappa MA MB WB",
+  when: "2019-04-14",
+  city: "Italia",
+  contact: "segreteria@fifd.it",
+  user_id: User.first.id,
+  links: "vedi ciu",
+  picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDdh3SeK71DJWGjgQy4yWUsEF0Bxa2eH8H0VcYv18Ba-hFA4O"
 )
 
 puts 'Creating fake categories...'
@@ -57,6 +78,7 @@ csv2.each do |row|
   t.user = User.where(firstname: "admin").first
   t.name = row['name']
   t.city = row['city']
+  t.accepted = true
   t.category = Category.where(cat: row['category'], event: Event.first).first
   t.save
 end
@@ -95,7 +117,7 @@ puts 'Creating fake points...'
 matches = Match.all
 matches.each do |match|
 
-  if match.points?
+  if match.game_points
 
     Point.create(
       match_id: match.id,
@@ -116,6 +138,22 @@ matches.each do |match|
     # puts "#{n}"
     # n += 1
   end
+end
+
+puts 'Creating fake sotg...'
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'sotgs.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = Sotg.new
+  t.match = Match.where(hometeam: row['voting_team'], awayteam: row['voted_team']) ? Match.where(hometeam: row['voting_team'], awayteam: row['voted_team']).first : Match.where(hometeam: row['voted_team'], awayteam: row['voting_team']).first
+  t.sotg_score1 = row['sotg_score1']
+  t.sotg_score1 = row['sotg_score2']
+  t.sotg_score1 = row['sotg_score3']
+  t.sotg_score1 = row['sotg_score4']
+  t.sotg_score1 = row['sotg_score5']
+  t.voting_team = Team.where(name: row['voting_team']).first
+  t.voted_team = Team.where(name: row['voted_team']).first
+  t.save
 end
 
 puts 'seed done!'

@@ -3,12 +3,17 @@ class TeamsController < ApplicationController
   before_action :find_team, only: [:show]
 
   def show
-    @matches = Match.where(hometeam_id: @team.id) + Match.where(awayteam_id: @team.id)
+    @matches = Match.where(hometeam: @team).to_a
+    @matches += Match.where(awayteam: @team).to_a
     @datetime = []
     @matches.each do |match|
-      @datetime << match.day
+      @datetime << match.day_time.strftime("%A %d,%B,%Y")
     end
-    @datetime.uniq!.sort!
+    @datetime.uniq!.reverse.sort!
+  end
+
+  def method_name
+
   end
 
 private
@@ -18,5 +23,7 @@ private
 
   def find_team
     @team = Team.find(params[:id])
+    @event = Event.find(params[:event_id])
   end
+
 end

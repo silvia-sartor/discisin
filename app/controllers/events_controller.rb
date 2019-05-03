@@ -2,9 +2,22 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :find_event, only: [:show, :results]
   before_action :find_matches, only: [:show, :results]
-  before_action :find_teams, only: [:show,:results]
 
   def show
+    find_categories
+    @teams = @event.teams
+    @matches =[]
+    @days =[]
+    @locations =[]
+    @teams.each  do |team|
+      @matches += Match.where(hometeam: team).to_a
+    end
+    @matches.each do |match|
+      @days << match.day_time.strftime("%A %d,%B,%Y")
+      @locations << match.address
+    end
+    @days.uniq!.reverse.sort!
+    @locations.uniq!
   end
 
   def results
@@ -28,29 +41,18 @@ class EventsController < ApplicationController
     end
   end
 
-  def find_matches
-    @matches = Match.where(event: @event)
-    @datetime = []
-    @locations = []
-    @pools = []
-    @matches.each { |match|
-      @pools << match.name
-      @datetime << match.day
-      @locations << match.where
-    }
-    @datetime.uniq!.sort!
-    @locations.uniq!
-    @pools.uniq!
+  def find_categories
+    @categories = @event.categories
   end
 
-  def find_teams
-    @teams = Team.where(event: @event, accepted: true)
+  def find_matches
+
   end
 
   def classification(pool)
     @classific = []
     @teams.each do |teameach|
-      same_pool_team = Match.where(event: @event, name: pool, hometeam: teameach) + Match.where(event: @event, name: pool, awayteam: teameach)
+      same_pool_team = Match.where(category: teameach.category, name: pool, hometeam: teameach) + Match.where(event: @event, name: pool, awayteam: teameach)
       if same_pool_team.empty?
       else
         #  [[team, points, games, dftot,ms tot, md]]

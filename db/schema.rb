@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
     t.float "latitude"
     t.float "longitude"
     t.string "field"
-    t.boolean "points?", default: true
+    t.boolean "game_points", default: true
     t.integer "hometeam_score"
     t.integer "awayteam_score"
     t.bigint "hometeam_id"
@@ -96,7 +96,12 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
   end
 
   create_table "sotgs", force: :cascade do |t|
-    t.integer "sotg_score"
+    t.integer "sotg_score5"
+    t.integer "sotg_score1"
+    t.integer "sotg_score2"
+    t.integer "sotg_score3"
+    t.integer "sotg_score4"
+    t.text "comment"
     t.bigint "voting_team_id"
     t.bigint "voted_team_id"
     t.bigint "match_id"
@@ -111,7 +116,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
     t.string "name"
     t.string "city"
     t.integer "rating"
-    t.boolean "accepted?", default: false
+    t.boolean "accepted", default: false
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false

@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :events do
-    resources :teams, only: [:create, :edit, :show]
+    resources :category do
+      resources :results
+    end
+    resources :teams
     resources :matches do
       resources :points
+      resources :sotgs
     end
-    get 'results', to: 'events#results', as: :results
   end
 end

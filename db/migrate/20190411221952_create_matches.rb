@@ -8,7 +8,7 @@ class CreateMatches < ActiveRecord::Migration[5.2]
       t.float :latitude
       t.float :longitude
       t.string :field
-      t.boolean :points?, default: true
+      t.boolean :game_points, default: true
       t.integer :hometeam_score, default: nil
       t.integer :awayteam_score, default: nil
       t.references :hometeam, foreign_key: {to_table: :teams}
