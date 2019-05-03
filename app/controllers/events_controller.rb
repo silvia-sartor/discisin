@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :find_event, only: [:show, :results]
-  before_action :find_matches, only: [:show, :results]
+
 
   def show
     find_categories
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name)
+    params.require(:event).permit(:name, :when, :city, :currency, :description,:links, :contact, :picture, :price)
   end
 
   def find_event
@@ -43,10 +43,6 @@ class EventsController < ApplicationController
 
   def find_categories
     @categories = @event.categories
-  end
-
-  def find_matches
-
   end
 
   def classification(pool)

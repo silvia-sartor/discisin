@@ -25,7 +25,7 @@
   <ul>
   <% @categories.each do |category| %>
     <li>
-  <h3><%= link_to "Results of #{category.cat}",   event_category_result_path(@event, category), method: :get %>
+  <h3><%= link_to "Results of #{category.cat}",   event_category_results_path(@event, category), method: :get %>
   </h3>
   </li>
   <% end %>

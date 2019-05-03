@@ -145,14 +145,18 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'sotgs.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   t = Sotg.new
-  t.match = Match.where(hometeam: row['voting_team'], awayteam: row['voted_team']) ? Match.where(hometeam: row['voting_team'], awayteam: row['voted_team']).first : Match.where(hometeam: row['voted_team'], awayteam: row['voting_team']).first
-  t.sotg_score1 = row['sotg_score1']
-  t.sotg_score1 = row['sotg_score2']
-  t.sotg_score1 = row['sotg_score3']
-  t.sotg_score1 = row['sotg_score4']
-  t.sotg_score1 = row['sotg_score5']
   t.voting_team = Team.where(name: row['voting_team']).first
   t.voted_team = Team.where(name: row['voted_team']).first
+  if Match.where(hometeam: t.voting_team, awayteam: t.voted_team).empty?
+    t.match =  Match.where(hometeam: t.voted_team, awayteam: t.voting_team).first
+  else
+    t.match = Match.where(hometeam: t.voting_team, awayteam: t.voted_team).first
+  end
+  t.sotg_score1 = row['sotg_score1']
+  t.sotg_score2 = row['sotg_score2']
+  t.sotg_score3 = row['sotg_score3']
+  t.sotg_score4 = row['sotg_score4']
+  t.sotg_score5 = row['sotg_score5']
   t.save
 end
 

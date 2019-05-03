@@ -17,9 +17,9 @@ Ti ricordiamo che è disponibile un documento che contiene esempi per la valutaz
 
 Il documento è disponibile nella sezione SOTG del sito <a href="http://fifd.it/"></a> e nella cartella dropbox contenente tutti i documenti per la valutazione dello SOTG: <a href="https://tinyurl.com/SOTGPACK"></a>
 
-<p>Your team: <%#= @current_team.name %> </p>
-<p>Opposing team: <%#= @opposing_team.name %> </p>
-<p>Match: <%#= @match.name %> </p>
+<p>Your team: <%= @current_team.name %> </p>
+<p>Opposing team: <%= @opposing_team.name %> </p>
+<p>Match: <%= @match.name %> </p>
 
 <%= simple_form_for @sotg, url: event_match_sotgs_path do |f| %>
 
@@ -27,28 +27,28 @@ Il documento è disponibile nella sezione SOTG del sito <a href="http://fifd.it/
 </h2>
 <p>Esempi: non hanno fatto chiamate ingiustificate. Non hanno intenzionalmente frainteso le regole. Hanno osservato/rispettato i limiti di tempo. Quando non conoscevano le regole, hanno dimostrato volontà di impararle.</p>
 
-<%= f.input :sotg_score0, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
+<%= f.input :sotg_score1, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
 
 
 <h2>2. Falli e contatto fisico</h2>
 <p>Esempi: hanno evitato falli, contatti e giocate pericolose.</p>
 
-<%= f.input :sotg_score1, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
+<%= f.input :sotg_score2, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
 
 <h2>3. Comportamento leale e corretto</h2>
 <p>Esempi: si sono scusati nelle situazioni appropriate, hanno informato i propri compagni di squadra quando essi facevano chiamate errate o fuori luogo. Hanno effettuato solo chiamate significative.</p>
 
-<%= f.input :sotg_score2, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
+<%= f.input :sotg_score3, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
 
 <h2>4. Atteggiamento positivo e auto controllo</h2>
 <p>Esempi: si sono comportati educatamente. Hanno giocato con un'appropriata intensità indipendentemente dal punteggio. Hanno lasciato complessivamente una impressione positiva sia durante, sia dopo la partita.</p>
 
-<%= f.input :sotg_score3, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
+<%= f.input :sotg_score4, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
 
 <h2>5. Comunicazione</h2>
 <p>Esempi: hanno comunicato rispettosamente. Hanno ascoltato. Hanno mantenuto le discussioni entro i limiti di tempo.</p>
 
-<%= f.input :sotg_score4, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
+<%= f.input :sotg_score5, :label => "", as: :radio_buttons, collection: Sotg::VOTES, label_method: :second, value_method: :first %>
 
 <p>Commenti
 Importante: se selezionate 0 (*) o 4 (*) in una qualsiasi categoria, inserite un commento sintetico dei fatti accaduti. Commenti positivi e negativi saranno comunicati nella maniera appropriata alla squadra interessata.</p>
