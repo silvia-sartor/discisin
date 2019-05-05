@@ -11,11 +11,10 @@
   <thead>
     <tr>
       <th>Day</th>
-      <th>Points</th>
       <th>Team</th>
       <th>Score</th>
       <th>Score</th>
-      <th>Team</th>
+      <th>Opposing Team</th>
       <th>Points</th>
     </tr>
   </thead>
@@ -28,19 +27,20 @@
     <tr>
       <td><%= match.day_time.strftime("%B %d") %></td>
       <% if  teameach == match.hometeam %>
-      <td><%= Point.where(match: match, team: teameach).first.pt %></td>
       <td><%= teameach.name %></td>
       <td><%= match.hometeam_score %></td>
       <td><%= match.awayteam_score %></td>
       <td><%= match.awayteam.name %></td>
-      <td><%= Point.where(match: match, team: match.awayteam).first.pt %></td>
       <% else %>
-      <td><%= Point.where(match: match, team: teameach).first.pt %></td>
       <td><%= teameach.name %></td>
       <td><%= match.awayteam_score%></td>
       <td><%= match.hometeam_score %></td>
       <td><%= match.hometeam.name %></td>
-      <td><%= Point.where(match: match, team: match.hometeam).first.pt %></td>
+      <% end %>
+      <% if  match.hometeam_score %>
+      <td><%= Point.where(match: match, team: teameach).first.pt %></td>
+      <% else %>
+      <td> - </td>
       <% end %>
     </tr>
     <% end %>

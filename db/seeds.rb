@@ -161,4 +161,19 @@ csv.each do |row|
   t.save
 end
 
+puts 'Creating matches coming...'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'matches_coming.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = Match.new
+  t.name = row['name']
+  t.day_time = row['day_time']
+  t.address = row['address']
+  t.field = row['field']
+  t.game_length = row['game_length']
+  t.hometeam = Team.where(name: row['hometeam']).first
+  t.awayteam = Team.where(name: row['awayteam']).first
+  t.save
+end
 puts 'seed done!'
