@@ -152,11 +152,12 @@ csv.each do |row|
   else
     t.match = Match.where(hometeam: t.voting_team, awayteam: t.voted_team).first
   end
-  t.sotg_score1 = row['sotg_score1']
-  t.sotg_score2 = row['sotg_score2']
-  t.sotg_score3 = row['sotg_score3']
-  t.sotg_score4 = row['sotg_score4']
-  t.sotg_score5 = row['sotg_score5']
+  t.sotg1 = row['sotg1'].to_i
+  t.sotg2 = row['sotg2'].to_i
+  t.sotg3 = row['sotg3'].to_i
+  t.sotg4 = row['sotg4'].to_i
+  t.sotg5 = row['sotg5'].to_i
+  t.total = row['sotg1'].to_i + row['sotg2'].to_i + row['sotg3'].to_i + row['sotg4'].to_i + row['sotg5'].to_i
   t.save
 end
 

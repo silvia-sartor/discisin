@@ -14,6 +14,7 @@ class SotgsController < ApplicationController
     @sotg.match_id = params[:match_id]
     @sotg.voted_team_id = params[:sotg][:voted_team_id]
     @sotg.voting_team_id = params[:sotg][:voting_team_id]
+    @sotg.total = sotg.sotg1 + sotg.sotg2 + sotg.sotg3 + sotg.sotg4 + sotg.sotg5
 
     if @sotg.save
       redirect_to event_team_path(params[:event_id], @sotg.voted_team)
@@ -26,39 +27,35 @@ class SotgsController < ApplicationController
     find_category
     find_teams
     find_matches
+    classification
   end
 
 private
+
   def sotg_params
-    params.require(:sotg).permit(:sotg_score5, :sotg_score1, :sotg_score2, :sotg_score3, :sotg_score4, :voting_team_id, :voted_team_id, :match_id, :event_id)
+    params.require(:sotg).permit(:sotg5, :sotg1, :sotg2, :sotg3, :sotg4, :voting_team_id, :voted_team_id, :match_id, :event_id)
   end
 
   def find_sotg
     @sotg = Sotg.find(params[:id])
   end
 
-  def classification(pool)
+  def classification
     @classific = []
     @teams.each do |teameach|
-      same_pool_team = Match.where(name: pool, hometeam: teameach) + Match.where(name: pool, awayteam: teameach)
-      if same_pool_team.empty?
-      else
-        #  [[team, points, games, dftot,ms tot, md]]
-        team_seed = { :team => teameach, :pt => 0, :game => 0, :w => 0, :l => 0, :mf => 0, :ms => 0, :md => 0 }
-        same_pool_team.each do |match|
-          if match.hometeam_score
-            game = Point.where(match: match, team: teameach).first
-            team_seed[:pt] += game.pt
-            game.pt >= 2 ? team_seed[:w] += 1 : team_seed[:l] += 1
-            team_seed[:game] += 1
-            team_seed[:mf] += game.metefatte
-            team_seed[:ms] -= game.metesubite
-            team_seed[:md] += game.metedifference
-          end
-        end
-        @classific << team_seed
+      same_team = Sotg.where(voted_team: teameach)
+      #  [[team, points, games, dftot,ms tot, md]]
+      team_sotg = { :team => teameach, :sotg1 => 0, :sotg2 => 0, :sotg3 => 0, :sotg4 => 0, :sotg5 => 0, :total => 0 }
+      same_team.each do |sotg|
+        team_sotg[:sotg1] += sotg.sotg1
+        team_sotg[:sotg2] += sotg.sotg2
+        team_sotg[:sotg3] += sotg.sotg3
+        team_sotg[:sotg4] += sotg.sotg4
+        team_sotg[:sotg5] += sotg.sotg5
+        team_sotg[:total] += sotg.total
       end
+      @classific << team_sotg.each { |key, value| value = key != :team ? value / same_team.count : value }
+      @classific.sort_by! { |a| [a[:total]] }.reverse!
     end
-    @classific.sort_by { |a| [a[:pt], a[:mf], a[:ms], a[:md]] }.reverse
   end
 end
