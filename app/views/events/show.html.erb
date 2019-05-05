@@ -7,7 +7,7 @@
 <p>Where:</p><h3><%= @event.city %></h3>
 
 <div>
-  <% @categories.sort { |a, b| a[:cat]<=>b[:cat] }.each do |category| %>
+  <% @categories.sort { |a, b| a[:cat] <=> b[:cat] }.each do |category| %>
   <h2><%= category.cat %></h2>
   <div>
     <ul>
@@ -26,6 +26,17 @@
   <% @categories.each do |category| %>
     <li>
   <h3><%= link_to "Results of #{category.cat}",   event_category_results_path(@event, category), method: :get %>
+  </h3>
+  </li>
+  <% end %>
+</ul>
+</div>
+
+<div>
+  <ul>
+  <% @categories.each do |category| %>
+    <li>
+  <h3><%= link_to "Spirt of the Game of #{category.cat}",   event_category_sotgs_path(@event, category), method: :get %>
   </h3>
   </li>
   <% end %>

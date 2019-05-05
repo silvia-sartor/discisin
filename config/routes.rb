@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   resources :events do
     resources :category do
       resources :results
+      resources :sotgs, only: [:index]
     end
     resources :teams
     resources :matches do
       resources :points
-      resources :sotgs
+      resources :sotgs, only: [:new, :create]
     end
   end
 end

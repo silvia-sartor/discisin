@@ -1,2 +1,56 @@
-<!-- <h1>Resultss#show</h1>
-<p>Find me in app/views/resultss/index.html.erb</p> -->
+<!-- <h1>Results#show</h1>
+<p>Find me in app/views/results/index.html.erb</p> -->
+
+<h1><%= @event.name %>: results</h1>
+
+<div>
+  <% @pools.each do |pool| %>
+<h1> Girone <%= pool %>: </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Points</th>
+      <th>Team</th>
+      <th>Score</th>
+      <th>Score</th>
+      <th>Team</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+<% @teams.each do |teameach| %>
+<% same_pool = Match.where(name: pool, hometeam: teameach) + Match.where(name: pool, awayteam: teameach) %>
+<% if same_pool.empty? %>
+<% else %>
+  <tbody>
+    <% same_pool.each do |match| %>
+    <tr>
+      <td><%= match.day_time.strftime("%B %d") %></td>
+      <% if  teameach == match.hometeam %>
+      <td><%= Point.where(match: match, team: teameach).first.pt %></td>
+      <td><%= teameach.name %></td>
+      <td><%= match.hometeam_score %></td>
+      <td><%= match.awayteam_score %></td>
+      <td><%= match.awayteam.name %></td>
+      <td><%= Point.where(match: match, team: match.awayteam).first.pt %></td>
+      <% else %>
+      <td><%= Point.where(match: match, team: teameach).first.pt %></td>
+      <td><%= teameach.name %></td>
+      <td><%= match.awayteam_score%></td>
+      <td><%= match.hometeam_score %></td>
+      <td><%= match.hometeam.name %></td>
+      <td><%= Point.where(match: match, team: match.hometeam).first.pt %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+<% end %>
+<% end %>
+</table>
+<% end %>
+</div>
+
+<div>
+  <%= render partial: "results/shared/partials/poolsresults" %>
+</div>
