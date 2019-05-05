@@ -1,17 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+require 'csv'
 
 puts 'Cleaning database...'
 Favorite.destroy_all
+Member.destroy_all
 Point.destroy_all
+Sotg.destroy_all
 Match.destroy_all
 Team.destroy_all
+Category.destroy_all
 Event.destroy_all
 User.destroy_all
 
@@ -22,260 +18,72 @@ user = User.create(
   lastname: "admin",
   email: "silviasartor@ymail.com",
   password: "123456",
-  phone: "3335435156",
+  phone: "3335435156"
 )
 
 puts 'Creating fake event...'
 
 event = Event.create(
-  name: "CIU Women B",
-  when: "2017-12-15",
-  where: "Via del sale 60, Cremona, Italia",
+  name: "CIU",
+  when: "2019-05-05",
+  city: "Italia",
   price: 30.00,
   currency: "euro",
-  categories: ["Women"],
   contact: "segreteria@fifd.it",
   user_id: User.first.id,
+  picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDdh3SeK71DJWGjgQy4yWUsEF0Bxa2eH8H0VcYv18Ba-hFA4O"
 )
+
+event = Event.create(
+  name: "Tappa MA MB WB",
+  when: "2019-03-17",
+  city: "Italia",
+  contact: "segreteria@fifd.it",
+  user_id: User.first.id,
+  links: "vedi ciu",
+  picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDdh3SeK71DJWGjgQy4yWUsEF0Bxa2eH8H0VcYv18Ba-hFA4O"
+)
+
+event = Event.create(
+  name: "Tappa MA MB WB",
+  when: "2019-04-14",
+  city: "Italia",
+  contact: "segreteria@fifd.it",
+  user_id: User.first.id,
+  links: "vedi ciu",
+  picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDdh3SeK71DJWGjgQy4yWUsEF0Bxa2eH8H0VcYv18Ba-hFA4O"
+)
+
+puts 'Creating fake categories...'
+
+categories_ma = Category.create(
+  event_id: Event.first.id,
+  cat: "MA"
+  )
+categories_wb = Category.create(
+  event_id: Event.first.id,
+  cat: "WB"
+  )
+categories_mb = Category.create(
+  event_id: Event.first.id,
+  cat: "MB"
+  )
 
 puts 'Creating fake teams...'
 
-hub = Team.create(
-  name: "Hub",
-  category: "Women",
-  n_players: 18,
-  city: "Verona-Cremona-Trento",
-  rating: 3,
-  accepted: true,
-  user_id: User.first.id,
-  event_id: Event.first.id
-)
-
-donkey = Team.create(
-  name: "Donkey Ladies",
-  category: "Women",
-  n_players: 18,
-  city: "Milano",
-  # rating: 3,
-  accepted: true,
-  user_id: User.first.id,
-  event_id: Event.first.id
-)
-
-fireflies = Team.create(
-  name: "Fireflies",
-  category: "Women",
-  n_players: 18,
-  city: "Torino",
-  # rating: 3,
-  accepted: true,
-  user_id: User.first.id,
-  event_id: Event.first.id
-)
-
-cusb_west = Team.create(
-  name: "CUSB Red Bulle West",
-  category: "Women",
-  n_players: 18,
-  city: "Bologna",
-  # rating: 3,
-  accepted: true,
-  user_id: User.first.id,
-  event_id: Event.first.id
-)
-
-duepick = Team.create(
-  name: "2DPick",
-  category: "Women",
-  n_players: 18,
-  city: "Reggio-Parma-Brescia",
-  # rating: 3,
-  accepted: true,
-  user_id: User.first.id,
-  event_id: Event.first.id
-)
-
-tane = Team.create(
-  name: "CUS Padova Tane Malefiche",
-  category: "Women",
-  n_players: 18,
-  city: "Padova",
-  # rating: 3,
-  accepted: true,
-  user_id: User.first.id,
-  event_id: Event.first.id
-)
+csv_text2 = File.read(Rails.root.join('lib', 'seeds', 'teams.csv'))
+csv2 = CSV.parse(csv_text2, :headers => true, :encoding => 'ISO-8859-1')
+csv2.each do |row|
+  t = Team.new
+  t.user = User.where(firstname: "admin").first
+  t.name = row['name']
+  t.city = row['city']
+  t.accepted = true
+  t.category = Category.where(cat: row['category'], event: Event.first).first
+  t.save
+end
 
 puts 'Creating fake matches...'
-
-match_one = Match.create(
-  name: "WB N",
-  day: "2019-04-14",
-  start_time: "9:00",
-  game_length: 80 ,
-  where: "via del sale 60, Cremona",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Donkey Ladies").first.id,
-  awayteam_id: Team.where(name: "Hub").first.id,
-  event_id: Event.first.id,
-  hometeam_score:11,
-  awayteam_score:13
-)
-
-
-match_one = Match.create(
-  name: "WB N",
-  day: "2019-04-14",
-  start_time: "10:30",
-  game_length: 80 ,
-  where: "via del sale 60, Cremona",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Fireflies").first.id,
-  awayteam_id: Team.where(name: "CUSB Red Bulle West").first.id,
-  event_id: Event.first.id,
-  hometeam_score:13,
-  awayteam_score:7
-)
-
-match_one = Match.create(
-  name: "WB N",
-  day: "2019-04-14",
-  start_time: "12:00",
-  game_length: 80 ,
-  where: "via del sale 60, Cremona",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Donkey Ladies").first.id,
-  awayteam_id: Team.where(name: "2DPick").first.id,
-  event_id: Event.first.id,
-  hometeam_score:15,
-  awayteam_score:4
-)
-
-match_one = Match.create(
-  name: "WB N",
-  day: "2019-04-14",
-  start_time: "13:30",
-  game_length: 80 ,
-  where: "via del sale 60, Cremona",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Fireflies").first.id,
-  awayteam_id: Team.where(name: "CUS Padova Tane Malefiche").first.id,
-  event_id: Event.first.id,
-  hometeam_score:8,
-  awayteam_score:11
-)
-
-match_one = Match.create(
-  name: "WB N",
-  day: "2019-04-14",
-  start_time: "15:00",
-  game_length: 80 ,
-  where: "via del sale 60, Cremona",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Hub").first.id,
-  awayteam_id: Team.where(name: "2DPick").first.id,
-  event_id: Event.first.id,
-  hometeam_score:15,
-  awayteam_score:5
-)
-
-match_one = Match.create(
-  name: "WB N",
-  day: "2019-04-14",
-  start_time: "16:30",
-  game_length: 80 ,
-  where: "via del sale 60, Cremona",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "CUS Padova Tane Malefiche").first.id,
-  awayteam_id: Team.where(name: "CUSB Red Bulle West").first.id,
-  event_id: Event.first.id,
-  hometeam_score:15,
-  awayteam_score:11
-)
-
-match_due = Match.create(
-  name: "WB N",
-  day: "2019-03-17",
-  start_time: "9:00",
-  game_length: 80 ,
-  where: "via Jacopo Corrado 4, Padova",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "CUS Padova Tane Malefiche").first.id,
-  awayteam_id: Team.where(name: "2DPick").first.id,
-  event_id: Event.first.id,
-  hometeam_score:15,
-  awayteam_score:5
-)
-
-match_due = Match.create(
-  name: "WB N",
-  day: "2019-03-17",
-  start_time: "10:30",
-  game_length: 80 ,
-  where: "via Jacopo Corrado 4, Padova",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Donkey Ladies").first.id,
-  awayteam_id: Team.where(name: "Fireflies").first.id,
-  event_id: Event.first.id,
-  hometeam_score:15,
-  awayteam_score:11
-)
-
-match_due = Match.create(
-  name: "WB N",
-  day: "2019-03-17",
-  start_time: "12:00",
-  game_length: 80 ,
-  where: "via Jacopo Corrado 4, Padova",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Hub").first.id,
-  awayteam_id: Team.where(name: "CUS Padova Tane Malefiche").first.id,
-  event_id: Event.first.id,
-  hometeam_score:10,
-  awayteam_score:15
-)
-
-match_due = Match.create(
-  name: "WB N",
-  day: "2019-03-17",
-  start_time: "13:30",
-  game_length: 80 ,
-  where: "via Jacopo Corrado 4, Padova",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Donkey Ladies").first.id,
-  awayteam_id: Team.where(name: "CUSB Red Bulle West").first.id,
-  event_id: Event.first.id,
-  hometeam_score:12,
-  awayteam_score:15
-)
-
-match_due = Match.create(
-  name: "WB N",
-  day: "2019-03-17",
-  start_time: "15:00",
-  game_length: 80 ,
-  where: "via Jacopo Corrado 4, Padova",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Fireflies").first.id,
-  awayteam_id: Team.where(name: "2DPick").first.id,
-  event_id: Event.first.id,
-  hometeam_score:15,
-  awayteam_score:6
-)
-
-match_due = Match.create(
-  name: "WB N",
-  day: "2019-03-17",
-  start_time: "16:30",
-  game_length: 80 ,
-  where: "via Jacopo Corrado 4, Padova",
-  field: "Campo 1",
-  hometeam_id: Team.where(name: "Hub").first.id,
-  awayteam_id: Team.where(name: "CUSB Red Bulle West").first.id,
-  event_id: Event.first.id,
-  hometeam_score:15,
-  awayteam_score:11
-)
 
 def points(hometeam_score, awayteam_score)
   if hometeam_score - awayteam_score >= 4
@@ -289,14 +97,27 @@ def points(hometeam_score, awayteam_score)
   end
 end
 
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'matches.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = Match.new
+  t.name = row['name']
+  t.day_time = row['day_time']
+  t.address = row['address']
+  t.field = row['field']
+  t.game_length = row['game_length']
+  t.hometeam = Team.where(name: row['hometeam']).first
+  t.hometeam_score = row['hometeam_score'].to_i
+  t.awayteam = Team.where(name: row['awayteam']).first
+  t.awayteam_score = row['awayteam_score'].to_i
+  t.save
+end
 
 puts 'Creating fake points...'
-
-# n = 1
 matches = Match.all
 matches.each do |match|
 
-  if match.points?
+  if match.game_points
 
     Point.create(
       match_id: match.id,
@@ -317,6 +138,26 @@ matches.each do |match|
     # puts "#{n}"
     # n += 1
   end
+end
+
+puts 'Creating fake sotg...'
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'sotgs.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = Sotg.new
+  t.voting_team = Team.where(name: row['voting_team']).first
+  t.voted_team = Team.where(name: row['voted_team']).first
+  if Match.where(hometeam: t.voting_team, awayteam: t.voted_team).empty?
+    t.match =  Match.where(hometeam: t.voted_team, awayteam: t.voting_team).first
+  else
+    t.match = Match.where(hometeam: t.voting_team, awayteam: t.voted_team).first
+  end
+  t.sotg_score1 = row['sotg_score1']
+  t.sotg_score2 = row['sotg_score2']
+  t.sotg_score3 = row['sotg_score3']
+  t.sotg_score4 = row['sotg_score4']
+  t.sotg_score5 = row['sotg_score5']
+  t.save
 end
 
 puts 'seed done!'

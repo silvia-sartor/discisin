@@ -4,15 +4,10 @@
 <h1><%= @team.name %></h1>
 
 <p><%= "From: #{@team.city}" unless  @team.city.nil? %></p>
-<p><%= "Numbers of players: #{@team.n_players}" unless  @team.n_players.nil? %></p>
+<p><%= "Numbers of players: #{@team.members.count}" unless  @team.members.nil? %></p>
 
-
-
-
-
-<% @datetime.each do |eachday| %>
-
-<%= eachday %>
+<% @datetime.each do |day| %>
+<%= day %>
 <table>
   <thead>
     <tr>
@@ -24,33 +19,48 @@
       <th>score</th>
       <th>Team</th>
       <th>Points</th>
+      <th>Sotg voted?</th>
+      <th>Sotg recived</th>
     </tr>
   </thead>
   <tbody>
     <% @matches.each do |match| %>
-    <% if match.day == eachday %>
-    <tr>
-      <td><%= match.where %></td>
-      <td><%= match.start_time.hour %>:<%= match.start_time.min%></td>
-      <td><%= match.field %></td>
-      <td><%= @team.name%></td>
-      <% if  @team == match.hometeam %>
-      <td><%= match.hometeam_score %></td>
-      <td><%= match.awayteam_score %></td>
-      <td><%= match.awayteam.name %></td>
-      <% else %>
-      <td><%= match.awayteam_score%></td>
-      <td><%= match.hometeam_score %></td>
-      <td><%= match.hometeam.name %></td>
-      <% end %>
-      <% if match.points? %>
-        <td><%= Point.where(match: match, team: @team).first.pt %></td>
-      <% else %>
-        <td><%= "-" %> </td>
-      <% end %>
-    </tr>
+      <% if match.day_time.strftime("%A %d,%B,%Y") == day %>
+      <tr>
+        <td><%= match.address %></td>
+        <td><%= match.day_time.hour %>:<%= match.day_time.min%></td>
+        <td><%= match.field %></td>
+        <td><%= @team.name%></td>
+        <% if  @team == match.hometeam %>
+        <td><%= match.hometeam_score %></td>
+        <td><%= match.awayteam_score %></td>
+        <td><%= match.awayteam.name %></td>
+        <% else %>
+        <td><%= match.awayteam_score if match.awayteam_score %></td>
+        <td><%= match.hometeam_score if match.hometeam_score%></td>
+        <td><%= match.hometeam.name %></td>
+        <% end %>
 
-    <% end %>
+        <% if match.game_points %>
+          <td><%= Point.where(match: match, team: @team).first.pt %></td>
+          <% if not Sotg.where(match: match, voting_team: @team).first %>
+            <td><%= link_to "Vote here", new_event_match_sotg_path(@event, match_id: match,voting_team_id: @team)  %> </td>
+            <td><%= "-" %> </td>
+          <% elsif not Sotg.where(match: match, voted_team: @team).first %>
+            <td><i class="fas fa-check"></i></td>
+            <td><%= "-" %> </td>
+          <% else %>
+            <% sotg_tot = Sotg.where(match: match, voting_team: @team).first %>
+            <td><%= "(#{sotg_tot = sotg_tot.sotg_score1 + sotg_tot.sotg_score2 + sotg_tot.sotg_score3 + sotg_tot.sotg_score4 + sotg_tot.sotg_score5}) " %><i class="fas fa-check"></i></td>
+            <% sotg_tot = Sotg.where(match: match, voted_team: @team).first %> <td><%= sotg_tot = sotg_tot.sotg_score1 + sotg_tot.sotg_score2 + sotg_tot.sotg_score3 + sotg_tot.sotg_score4 + sotg_tot.sotg_score5 %></td>
+          <% end %>
+        <% else %>
+          <td><%= "-" %> </td>
+          <td><%= "-" %> </td>
+          <td><%= "-" %> </td>
+        <% end %>
+      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

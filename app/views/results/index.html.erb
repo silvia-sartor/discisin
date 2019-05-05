@@ -1,5 +1,5 @@
-<!-- <h1>Events#results</h1>
-<p>Find me in app/views/events/results.html.erb</p> -->
+<!-- <h1>Results#show</h1>
+<p>Find me in app/views/results/index.html.erb</p> -->
 
 <h1><%= @event.name %>: results</h1>
 
@@ -20,13 +20,13 @@
     </tr>
   </thead>
 <% @teams.each do |teameach| %>
-<% same_pool = Match.where(event: @event, name: pool, hometeam: teameach) + Match.where(event: @event, name: pool, awayteam: teameach) %>
+<% same_pool = Match.where(name: pool, hometeam: teameach) + Match.where(name: pool, awayteam: teameach) %>
 <% if same_pool.empty? %>
 <% else %>
   <tbody>
     <% same_pool.each do |match| %>
     <tr>
-      <td><%= match.day %></td>
+      <td><%= match.day_time.strftime("%B %d") %></td>
       <% if  teameach == match.hometeam %>
       <td><%= Point.where(match: match, team: teameach).first.pt %></td>
       <td><%= teameach.name %></td>
@@ -52,8 +52,5 @@
 </div>
 
 <div>
-  <%= render partial: "events/shared/partials/poolsresults" %>
-
-<%#= render partial: "dogs/partials/#{@user.role}_profile", locals: {user: @user} %>
-
+  <%= render partial: "results/shared/partials/poolsresults" %>
 </div>
