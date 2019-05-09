@@ -80,6 +80,10 @@
       <td><%= match.hometeam_score %></td>
       <td><%= match.awayteam_score%></td>
       <td><%= match.awayteam.name %></td>
+      <% if current_user == @event.user %>
+      <td><%= link_to "Edit", edit_event_match_path(@event, match),  class: "btn btn-ghost", method: :GET %></td>
+      <td><%= link_to "new match", new_event_match_path(@event),  class: "btn btn-ghost", method: :GET %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

@@ -101,7 +101,7 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'matches.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   t = Match.new
-  t.name = row['name']
+  t.name = Match.where(category: row['category']).first
   t.day_time = row['day_time']
   t.address = row['address']
   t.field = row['field']
@@ -110,6 +110,7 @@ csv.each do |row|
   t.hometeam_score = row['hometeam_score'].to_i
   t.awayteam = Team.where(name: row['awayteam']).first
   t.awayteam_score = row['awayteam_score'].to_i
+  t.category = Team.where(name: row['hometeam']).first.category
   t.save
 end
 
@@ -118,7 +119,6 @@ matches = Match.all
 matches.each do |match|
 
   if match.game_points
-
     Point.create(
       match_id: match.id,
       team_id: Team.find(match.hometeam_id).id,
@@ -174,6 +174,7 @@ csv.each do |row|
   t.game_length = row['game_length']
   t.hometeam = Team.where(name: row['hometeam']).first
   t.awayteam = Team.where(name: row['awayteam']).first
+  t.category = Team.where(name: row['awayteam']).first.category
   t.save
 end
 puts 'seed done!'

@@ -1,5 +1,5 @@
 class SotgsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_sotg, only: [:new]
 
   def new

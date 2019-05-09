@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
   belongs_to :event
   has_many :teams, :dependent => :destroy
-  has_many :matches, through: :teams
+  has_many :matches
 end

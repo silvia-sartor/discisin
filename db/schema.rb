@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
   create_table "matches", force: :cascade do |t|
     t.datetime "day_time"
     t.string "name"
+    t.string "category"
     t.integer "game_length"
     t.string "address"
     t.float "latitude"
@@ -66,9 +67,11 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
     t.integer "awayteam_score"
     t.bigint "hometeam_id"
     t.bigint "awayteam_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["awayteam_id"], name: "index_matches_on_awayteam_id"
+    t.index ["category_id"], name: "index_matches_on_category_id"
     t.index ["hometeam_id"], name: "index_matches_on_hometeam_id"
   end
 
@@ -149,6 +152,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
   add_foreign_key "events", "users"
   add_foreign_key "favorites", "events"
   add_foreign_key "favorites", "users"
+  add_foreign_key "matches", "categories"
   add_foreign_key "matches", "teams", column: "awayteam_id"
   add_foreign_key "matches", "teams", column: "hometeam_id"
   add_foreign_key "members", "teams"
