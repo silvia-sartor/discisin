@@ -18,9 +18,14 @@ class MatchesController < ApplicationController
     find_match
   end
 
+  def destroy
+    @match = Match.find(params[:id])
+    @match.destroy
+  end
+
   private
 
-  def event_params
+  def match_params
     params.require(:match).permit(:name, :day_time, :address, :category, :game_points, :game_length, :field, :hometeam_id, :awayteam_id )
   end
 end

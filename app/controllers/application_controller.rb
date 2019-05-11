@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     @teams.each { |team|
       @matches = Match.where(hometeam: team, game_points: true)
       @matches.each { |match|
-        @pools << match.name
+        @pools << match.pool
         @datetime << match.day_time
         @locations << match.address
       }

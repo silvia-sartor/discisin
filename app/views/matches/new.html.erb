@@ -7,10 +7,9 @@
 
   <%= simple_form_for @match, url: event_matches_path, method: :post do |f| %>
 
-  <%= f.input :name%>
-  <%= f.input :category, collection: @event.categories.sort_by { |a| [a[:cat]]} ,label_method: :cat, value_method: :id %>
-  <%= f.input :address, :autocomplete "on" %>
-  <%= f.input :field %>
+  <%= f.input :category, collection: @event.categories.sort_by { |a| [a[:cat]]} ,label_method: :cat, value_method: :id, data: { url: new_event_match_path(@event), remote: true } %>
+  <%#= f.input :pool, collection: @category.pools.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id%>
+  <%= f.input :address %>
   <%= f.input :field %>
 
   <div>

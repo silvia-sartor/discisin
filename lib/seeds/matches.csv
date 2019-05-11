@@ -1,4 +1,4 @@
-field,address,day_time,game_length,hometeam_score,hometeam,awayteam,awayteam_score,name
+field,address,day_time,game_length,hometeam_score,hometeam,awayteam,awayteam_score,pool
 Campo 1,Fano italia,2019-3-17 09:00,80,15,CUSB Fotta Red,Spaccamadoni,11,MA1
 Campo 1,Fano italia,2019-3-17 10:30,80,14,CUSB Red Bulls,CUS Padova Barbastreji,6,MA1
 Campo 1,Fano italia,2019-3-17 12:00,80,15,CUSB Fotta Red,CUSB Zero51,13,MA1

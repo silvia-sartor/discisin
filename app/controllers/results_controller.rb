@@ -16,7 +16,7 @@ class ResultsController < ApplicationController
   def classification(pool)
     @classific = []
     @teams.each do |teameach|
-      same_pool_team = Match.where(name: pool, hometeam: teameach) + Match.where(name: pool, awayteam: teameach)
+      same_pool_team = Match.where(pool: pool, hometeam: teameach) + Match.where(pool: pool, awayteam: teameach)
       if same_pool_team.empty?
       else
         #  [[team, points, games, dftot,ms tot, md]]

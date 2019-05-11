@@ -6,6 +6,7 @@ Member.destroy_all
 Point.destroy_all
 Sotg.destroy_all
 Match.destroy_all
+Pool.destroy_all
 Team.destroy_all
 Category.destroy_all
 Event.destroy_all
@@ -83,6 +84,18 @@ csv2.each do |row|
   t.save
 end
 
+puts 'Creating fake pools...'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'pools.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = Pool.new
+  t.name = row['name']
+  t.category = Category.where(cat: row['category']).first
+  t.save
+end
+
+
 puts 'Creating fake matches...'
 
 def points(hometeam_score, awayteam_score)
@@ -101,7 +114,7 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'matches.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   t = Match.new
-  t.name = Match.where(category: row['category']).first
+  t.pool = Pool.where(name: row['pool']).first
   t.day_time = row['day_time']
   t.address = row['address']
   t.field = row['field']
@@ -167,7 +180,7 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'matches_coming.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   t = Match.new
-  t.name = row['name']
+  t.pool = Pool.where(name: row['name']).first
   t.day_time = row['day_time']
   t.address = row['address']
   t.field = row['field']

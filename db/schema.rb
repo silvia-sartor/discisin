@@ -1,7 +1,7 @@
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
 #
+# incrementally modify your database, and then regenerate this schema definition.
 # Note that this schema.rb definition is the authoritative source for your
 # database schema. If you need to create the application database on another
 # system, you should be using db:schema:load, not running all the migrations
@@ -68,10 +68,14 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
     t.bigint "hometeam_id"
     t.bigint "awayteam_id"
     t.bigint "category_id"
+    t.bigint "homepool_id"
+    t.bigint "awaypool_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["awaypool_id"], name: "index_matches_on_awaypool_id"
     t.index ["awayteam_id"], name: "index_matches_on_awayteam_id"
     t.index ["category_id"], name: "index_matches_on_category_id"
+    t.index ["homepool_id"], name: "index_matches_on_homepool_id"
     t.index ["hometeam_id"], name: "index_matches_on_hometeam_id"
   end
 
@@ -96,6 +100,17 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
     t.datetime "updated_at", null: false
     t.index ["match_id"], name: "index_points_on_match_id"
     t.index ["team_id"], name: "index_points_on_team_id"
+  end
+
+  create_table "pools", force: :cascade do |t|
+    t.boolean "notification?", default: true
+    t.string "name"
+    t.string "classific"
+    t.string "category"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_pools_on_category_id"
   end
 
   create_table "sotgs", force: :cascade do |t|
@@ -153,12 +168,15 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
   add_foreign_key "favorites", "events"
   add_foreign_key "favorites", "users"
   add_foreign_key "matches", "categories"
+  add_foreign_key "matches", "pools", column: "awaypool_id"
+  add_foreign_key "matches", "pools", column: "homepool_id"
   add_foreign_key "matches", "teams", column: "awayteam_id"
   add_foreign_key "matches", "teams", column: "hometeam_id"
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
   add_foreign_key "points", "matches"
   add_foreign_key "points", "teams"
+  add_foreign_key "pools", "categories"
   add_foreign_key "sotgs", "matches"
   add_foreign_key "sotgs", "teams", column: "voted_team_id"
   add_foreign_key "sotgs", "teams", column: "voting_team_id"
