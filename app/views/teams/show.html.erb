@@ -41,7 +41,7 @@
         <td><%= match.hometeam.name %></td>
         <% end %>
 
-        <% if match.game_points %>
+        <% if match.game_points && match.hometeam_score %>
           <td><%= Point.where(match: match, team: @team).first.pt %></td>
           <% if not Sotg.where(match: match, voting_team: @team).first %>
             <td><%= link_to "Vote here", new_event_match_sotg_path(@event, match_id: match,voting_team_id: @team)  %> </td>
@@ -50,9 +50,9 @@
             <td><i class="fas fa-check"></i></td>
             <td><%= "-" %> </td>
           <% else %>
-            <% sotg_tot = Sotg.where(match: match, voting_team: @team).first %>
-            <td><%= "(#{sotg_tot = sotg_tot.sotg_score1 + sotg_tot.sotg_score2 + sotg_tot.sotg_score3 + sotg_tot.sotg_score4 + sotg_tot.sotg_score5}) " %><i class="fas fa-check"></i></td>
-            <% sotg_tot = Sotg.where(match: match, voted_team: @team).first %> <td><%= sotg_tot = sotg_tot.sotg_score1 + sotg_tot.sotg_score2 + sotg_tot.sotg_score3 + sotg_tot.sotg_score4 + sotg_tot.sotg_score5 %></td>
+            <% sotgteam = Sotg.where(match: match, voting_team: @team).first %>
+            <td><%= sotgteam.total %> (<i class="fas fa-check"></i>)</td>
+            <% sotgteam = Sotg.where(match: match, voted_team: @team).first %> <td><%= sotgteam.total %></td>
           <% end %>
         <% else %>
           <td><%= "-" %> </td>

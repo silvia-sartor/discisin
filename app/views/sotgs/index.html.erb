@@ -1,4 +1,68 @@
-<!-- <h1>Sotgs#show</h1>
+<!-- <h1>Sotgs#index</h1>
 <p>Find me in app/views/sotgs/index.html.erb</p> -->
 
-sdfdgfhgjg
+<h1><%= @event.name %>: results</h1>
+
+<div>
+  <h1> Girone <%= @category %>: </h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Voted team</th>
+        <th>Voting team</th>
+        <th>1 Conoscenza ed applicazione delle regole </th>
+        <th>2 Falli e contatto fisico</th>
+        <th>3 Comportamento leale e corretto</th>
+        <th>4 Atteggiamento positivo e auto controllo</th>
+        <th>5 Comunicazione</th>
+        <th>Total score</th>
+      </tr>
+    </thead>
+    <% @teams.each do |teameach| %>
+    <% sotgs = Sotg.where(voted_team: teameach) %>
+    <tbody>
+      <% sotgs.each do |sotg| %>
+      <% if Sotg.where(match: sotg.match).count == 2 %>
+      <tr>
+        <td><%=sotg.voted_team.name%></td>
+        <td><%=sotg.voting_team.name%></td>
+        <td><%=sotg.sotg1%></td>
+        <td><%=sotg.sotg2%></td>
+        <td><%=sotg.sotg3%></td>
+        <td><%=sotg.sotg4%></td>
+        <td><%=sotg.sotg5%></td>
+        <td><%=sotg.total%></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+    <% end %>
+  </table>
+
+  <table>
+    <thead>
+      <th>Voted team</th>
+      <th>1 Conoscenza ed applicazione delle regole </th>
+      <th>2 Falli e contatto fisico</th>
+      <th>3 Comportamento leale e corretto</th>
+      <th>4 Atteggiamento positivo e auto controllo</th>
+      <th>5 Comunicazione</th>
+      <th>Total score</th>
+    </thead>
+    <% @classific.each do |team| %>
+    <tbody>
+      <tr>
+        <td><%=team[:team].name%></td>
+        <td><%=team[:sotg1]%></td>
+        <td><%=team[:sotg2]%></td>
+        <td><%=team[:sotg3]%></td>
+        <td><%=team[:sotg4]%></td>
+        <td><%=team[:sotg5]%></td>
+        <td><%=team[:total]%></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+
+</div>

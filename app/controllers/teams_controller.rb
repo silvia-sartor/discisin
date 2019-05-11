@@ -12,10 +12,6 @@ class TeamsController < ApplicationController
     @datetime.uniq!.reverse.sort!
   end
 
-  def method_name
-
-  end
-
 private
   def team_params
     params.require(:team).permit(:name)

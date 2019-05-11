@@ -7,7 +7,7 @@
 <p>Where:</p><h3><%= @event.city %></h3>
 
 <div>
-  <% @categories.sort { |a, b| a[:cat] <=> b[:cat] }.each do |category| %>
+  <% @categories.each do |category| %>
   <h2><%= category.cat %></h2>
   <div>
     <ul>
@@ -59,9 +59,11 @@
     end.sort! do |a, b|
       a[:day_time]<=>b[:day_time]
     end %>
-<h3> <%= location %> </h3>
 <table>
   <thead>
+    <tr>
+      <th> <%= location %> </th>
+    </tr>
     <tr>
       <th>Time</th>
       <th>Field</th>
@@ -73,21 +75,27 @@
   </thead>
   <tbody>
     <% same_day_loc.each do |match| %>
-    <tr>
+    <tr data-match-id="<%= match.id %>" >
       <td><%= match.day_time.hour %>:<%= match.day_time.min%></td>
       <td><%= match.field %></td>
       <td><%= match.hometeam.name %></td>
       <td><%= match.hometeam_score %></td>
       <td><%= match.awayteam_score%></td>
       <td><%= match.awayteam.name %></td>
+      <% if current_user == @event.user %>
+      <td><%= link_to "Edit", edit_event_match_path(@event, match),  class: "btn btn-ghost", method: :GET %></td>
+      <td><%= link_to "Delete", event_match_path(@event, match), remote: true,  class: "btn btn-ghost", method: :delete %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
 </table>
+<br>
 <% end %>
 <% end %>
 
 <% end %>
+<button><%= link_to "new match", new_event_match_path(@event),  class: "btn btn-ghost", method: :GET %></button>
 
 
 

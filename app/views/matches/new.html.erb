@@ -1,0 +1,26 @@
+<!-- <h1>EMatches#show</h1>
+<p>Find me in app/views/matches/edit.html.erb</p> -->
+
+<% if current_user == @event.user %>
+
+<div>
+
+  <%= simple_form_for @match, url: event_matches_path, method: :post do |f| %>
+
+  <%= f.input :category, collection: @event.categories.sort_by { |a| [a[:cat]]} ,label_method: :cat, value_method: :id, data: { url: new_event_match_path(@event), remote: true } %>
+  <%#= f.input :pool, collection: @category.pools.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id%>
+  <%= f.input :address %>
+  <%= f.input :field %>
+
+  <div>
+    <p>Non inviare mai le password tramite Moduli Google.</p>
+  </div>
+
+  <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
+</div>
+<% else current_user.present? %>
+  <div>
+    <p>You are not allowd to modify the schedule!</p>
+  </div>
+<% end %>

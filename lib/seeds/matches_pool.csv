@@ -1,0 +1,13 @@
+
+field,address,day_time,game_length,hometeam,awayteam,name
+campo 1,Via Corazzini 6 Cremona Italia,2019-04-26 09:00,80,1BN,2BS,1-4
+campo 1,Via Corazzini 6 Cremona Italia,2019-04-26 10:30,80,5BN,5BS,9-11
+campo 1,Via Corazzini 6 Cremona Italia,2019-04-26 12:00,80,3BN,4BS,5-8
+campo 1,Via Corazzini 6 Cremona Italia,2019-04-26 13:30,80,1BN,1BS,1-4
+campo 1,Via Corazzini 6 Cremona Italia,2019-04-26 15:00,80,2BS,2BN,1-4
+campo 1,Via Corazzini 6 Cremona Italia,2019-04-26 16:30,80,3BN,3BS,5-8
+campo 2,Via Corazzini 6 Cremona Italia,2019-04-26 09:00,80,1BS,2BN,1-4
+campo 2,Via Corazzini 6 Cremona Italia,2019-04-26 12:00,80,3BS,4BN,5-8
+campo 2,Via Corazzini 6 Cremona Italia,2019-04-26 13:30,80,5BN,6BN,9-11
+campo 2,Via Corazzini 6 Cremona Italia,2019-04-26 15:00,80,4BN,4BS,5-8
+campo 2,Via Corazzini 6 Cremona Italia,2019-04-26 16:30,80,6BN,5BS,9-11

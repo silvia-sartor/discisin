@@ -32,6 +32,6 @@ class EventsController < ApplicationController
   end
 
   def find_categories
-    @categories = @event.categories
+    @categories = @event.categories.sort { |a, b| a[:cat] <=> b[:cat] }
   end
 end

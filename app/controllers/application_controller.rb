@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     @teams = Team.where(category: @category, accepted: true)
   end
 
+  def find_match
+    @match = Match.find(params[:id])
+  end
+
   def find_matches
     @datetime = []
     @locations = []
@@ -20,7 +24,7 @@ class ApplicationController < ActionController::Base
     @teams.each { |team|
       @matches = Match.where(hometeam: team, game_points: true)
       @matches.each { |match|
-        @pools << match.name
+        @pools << match.pool
         @datetime << match.day_time
         @locations << match.address
       }
@@ -28,5 +32,13 @@ class ApplicationController < ActionController::Base
     @datetime.uniq!.sort!
     @locations.uniq!
     @pools.uniq!
+  end
+
+  def find_event
+    if params[:event_id]
+      @event = Event.find(params[:event_id])
+    else
+      @event = Event.find(params[:id])
+    end
   end
 end
