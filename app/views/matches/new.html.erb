@@ -8,13 +8,14 @@
   <%= simple_form_for @match, url: event_matches_path, method: :post do |f| %>
 
   <%= f.input :category, collection: @event.categories.sort_by { |a| [a[:cat]]} ,label_method: :cat, value_method: :id, data: { url: new_event_match_path(@event), remote: true } %>
-  <%#= f.input :pool, collection: @category.pools.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id%>
+  <%= f.input :pool, collection: Pool.all.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id%>
+  <%= f.input :hometeam,collection: @event.teams.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id %>
+  <%= f.input :awayteam,collection: @event.teams.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id %>
   <%= f.input :address %>
+  <%= f.input :day_time %>
+  <%= f.input :game_points, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.input :game_length, as: :integer%>
   <%= f.input :field %>
-
-  <div>
-    <p>Non inviare mai le password tramite Moduli Google.</p>
-  </div>
 
   <%= f.button :submit, class: "btn-primary" %>
   <% end %>
