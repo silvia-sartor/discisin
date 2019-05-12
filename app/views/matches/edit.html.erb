@@ -1,2 +1,28 @@
 <!-- <h1>EMatches#show</h1>
 <p>Find me in app/views/matches/edit.html.erb</p> -->
+
+<% if current_user == @event.user %>
+
+<div>
+  <p><%= link_to "Back", :back %></p>
+
+  <%= simple_form_for @match, url: event_match_path, method: :put do |f| %>
+
+  <%= f.input :category_id, collection: @event.categories.sort_by { |a| [a[:cat]]} ,label_method: :cat, value_method: :id, data: { url: new_event_match_path(@event), remote: true } %>
+  <%= f.input :pool_id, collection: Pool.all.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id%>
+  <%= f.input :hometeam_id,collection: @event.teams.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id %>
+  <%= f.input :awayteam_id,collection: @event.teams.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id %>
+  <%= f.input :address %>
+  <%= f.input :day_time %>
+  <%= f.input :game_points, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.input :game_length, as: :integer%>
+  <%= f.input :field %>
+
+  <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
+</div>
+<% else current_user.present? %>
+  <div>
+    <p>You are not allowd to modify the schedule!</p>
+  </div>
+<% end %>

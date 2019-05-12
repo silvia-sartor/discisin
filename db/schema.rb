@@ -1,7 +1,7 @@
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
-#
 # incrementally modify your database, and then regenerate this schema definition.
+#
 # Note that this schema.rb definition is the authoritative source for your
 # database schema. If you need to create the application database on another
 # system, you should be using db:schema:load, not running all the migrations
@@ -55,8 +55,6 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
 
   create_table "matches", force: :cascade do |t|
     t.datetime "day_time"
-    t.string "name"
-    t.string "category"
     t.integer "game_length"
     t.string "address"
     t.float "latitude"
@@ -70,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
     t.bigint "category_id"
     t.bigint "homepool_id"
     t.bigint "awaypool_id"
+    t.bigint "pool_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["awaypool_id"], name: "index_matches_on_awaypool_id"
@@ -77,6 +76,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
     t.index ["category_id"], name: "index_matches_on_category_id"
     t.index ["homepool_id"], name: "index_matches_on_homepool_id"
     t.index ["hometeam_id"], name: "index_matches_on_hometeam_id"
+    t.index ["pool_id"], name: "index_matches_on_pool_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -103,10 +103,8 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
   end
 
   create_table "pools", force: :cascade do |t|
-    t.boolean "notification?", default: true
     t.string "name"
     t.string "classific"
-    t.string "category"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -168,6 +166,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_171223) do
   add_foreign_key "favorites", "events"
   add_foreign_key "favorites", "users"
   add_foreign_key "matches", "categories"
+  add_foreign_key "matches", "pools"
   add_foreign_key "matches", "pools", column: "awaypool_id"
   add_foreign_key "matches", "pools", column: "homepool_id"
   add_foreign_key "matches", "teams", column: "awayteam_id"
