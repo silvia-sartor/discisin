@@ -1,6 +1,17 @@
 <!-- <h1>Events#show</h1>
 <p>Find me in app/views/events/show.html.erb</p> -->
 
+  <% def timestart(match) %>
+    <% minute = match.day_time.min + match.game_length %>
+    <% if minute >= 60 %>
+      <% minute -= 60 %>
+      <% hours = match.day_time.hour + 1 %>
+    <% else %>
+      <% hours = match.day_time.hour %>
+    <% end %>
+    <% "#{match.day_time.strftime("%H:%M")} - #{hours}:#{minute}" %>
+  <% end %>
+
 <h1><%= @event.name %></h1>
 
 <p>When:</p><h3><%= @event.when %></h3>
@@ -76,7 +87,7 @@
   <tbody>
     <% same_day_loc.each do |match| %>
     <tr data-match-id="<%= match.id %>" >
-      <td><%= match.day_time.hour %>:<%= match.day_time.min%></td>
+      <td><%= timestart(match)%></td>
       <td><%= match.field %></td>
       <td><%= match.hometeam.name %></td>
       <td><%= match.hometeam_score %></td>
@@ -84,7 +95,9 @@
       <td><%= match.awayteam.name %></td>
       <% if current_user == @event.user %>
       <td><%= link_to "Edit", edit_event_match_path(@event, match),  class: "btn btn-ghost", method: :GET %></td>
+      <% if  match.hometeam_score.nil? %>
       <td><%= link_to "Delete", event_match_path(@event, match), remote: true,  class: "btn btn-ghost", method: :delete %></td>
+      <% end %>
       <% end %>
     </tr>
     <% end %>

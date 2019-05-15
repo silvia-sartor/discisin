@@ -8,7 +8,7 @@
 
   <%= simple_form_for @match, url: event_matches_path, method: :post do |f| %>
 
-  <%= f.input :category_id, collection: @event.categories.sort_by { |a| [a[:cat]]} ,label_method: :cat, value_method: :id, data: { url: new_event_match_path(@event), remote: true } %>
+  <%= f.input :category_id, as: :radio_buttons, collection: @event.categories.sort_by { |a| [a[:cat]]} ,label_method: :cat, value_method: :id %>
   <%= f.input :pool_id, collection: Pool.all.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id%>
   <%= f.input :hometeam_id,collection: @event.teams.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id %>
   <%= f.input :awayteam_id,collection: @event.teams.sort_by { |a| [a[:name]]} ,label_method: :name, value_method: :id %>
