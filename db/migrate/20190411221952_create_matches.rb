@@ -2,8 +2,6 @@ class CreateMatches < ActiveRecord::Migration[5.2]
   def change
     create_table :matches do |t|
       t.datetime :day_time
-      t.string :pool
-      t.string :category
       t.integer :game_length
       t.string :address
       t.float :latitude

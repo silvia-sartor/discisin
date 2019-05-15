@@ -180,7 +180,7 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'matches_coming.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   t = Match.new
-  t.pool = Pool.where(name: row['name']).first
+  t.pool = Pool.where(name: row['pool']).first
   t.day_time = row['day_time']
   t.address = row['address']
   t.field = row['field']
